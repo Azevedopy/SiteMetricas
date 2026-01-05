@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Métricas Semanais | Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ===== RESET E CONFIGURAÇÕES GERAIS ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8fafc;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== CABEÇALHO ===== */
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #2C6EE6 0%, #3D8BFF 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1F2937;
+        }
+
+        .logo-text span {
+            color: #2C6EE6;
+        }
+
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .main-nav a {
+            text-decoration: none;
+            color: #4B5563;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .main-nav a:hover {
+            color: #2C6EE6;
+        }
+
+        .main-nav a.active {
+            color: #2C6EE6;
+            font-weight: 600;
+        }
+
+        .main-nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(135deg, #2C6EE6 0%, #3D8BFF 100%);
+            border-radius: 2px;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #4B5563;
+            cursor: pointer;
+        }
+
+        /* ===== CONTEÚDO PRINCIPAL ===== */
+        main {
+            flex: 1;
+            padding: 60px 0;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .page-header h1 {
+            font-size: 2.8rem;
+            color: #1F2937;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: #6B7280;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* ===== FILTROS E CONTROLES ===== */
+        .metrics-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .period-filter {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .filter-label {
+            font-weight: 600;
+            color: #4B5563;
+        }
+
+        .filter-select {
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: 1px solid #d1d5db;
+            background-color: white;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            color: #1F2937;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-select:focus {
+            outline: none;
+            border-color: #2C6EE6;
+            box-shadow: 0 0 0 3px rgba(44, 110, 230, 0.1);
+        }
+
+        .download-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3);
+        }
+
+        /* ===== CARDS DE MÉTRICAS SEMANAIS ===== */
+        .metrics-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .metric-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .metric-card.highlight {
+            border: 2px solid #2C6EE6;
+        }
+
+        .card-week-header {
+            background: linear-gradient(135deg, #2C6EE6 0%, #3D8BFF 100%);
+            padding: 20px;
+            color: white;
+            position: relative;
+        }
+
+        .week-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .card-week-header h3 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .card-week-header p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .card-metrics-body {
+            padding: 25px;
+        }
+
+        .metric-item {
+            margin-bottom: 25px;
+        }
+
+        .metric-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .metric-label span {
+            font-weight: 600;
+            color: #4B5563;
+        }
+
+        .metric-value {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #1F2937;
+        }
+
+        .metric-bar {
+            height: 10px;
+            background-color: #e5e7eb;
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .metric-fill {
+            height: 100%;
+            border-radius: 5px;
+            position: relative;
+            transition: width 1s ease;
+        }
+
+        .metric-fill.green {
+            background: linear-gradient(90deg, #10b981 0%, #34d399 100%);
+        }
+
+        .metric-fill.blue {
+            background: linear-gradient(90deg, #2C6EE6 0%, #3D8BFF 100%);
+        }
+
+        .metric-fill.orange {
+            background: linear-gradient(90deg, #f59e0b 0%, #fbbf24 100%);
+        }
+
+        .metric-fill.red {
+            background: linear-gradient(90deg, #ef4444 0%, #f87171 100%);
+        }
+
+        .metric-trend {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        .trend-up {
+            color: #10b981;
+        }
+
+        .trend-down {
+            color: #ef4444;
+        }
+
+        .trend-neutral {
+            color: #6B7280;
+        }
+
+        .card-week-footer {
+            padding: 20px 25px;
+            background-color: #f8fafc;
+            border-top: 1px solid #e5e7eb;
+            text-align: center;
+        }
+
+        .btn-details {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 24px;
+            background: linear-gradient(135deg, #2C6EE6 0%, #3D8BFF 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-details:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(44, 110, 230, 0.3);
+        }
+
+        /* ===== RESUMO DE PERFORMANCE ===== */
+        .performance-summary {
+            background: linear-gradient(135deg, #1F2937 0%, #374151 100%);
+            border-radius: 16px;
+            padding: 40px;
+            margin-top: 60px;
+            color: white;
+        }
+
+        .summary-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .summary-header h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .summary-header p {
+            color: #d1d5db;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .summary-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .summary-stat {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .summary-stat:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .stat-label {
+            color: #d1d5db;
+            font-size: 0.95rem;
+        }
+
+        /* ===== RODAPÉ ===== */
+        footer {
+            background-color: #1F2937;
+            color: #f9fafb;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: white;
+            font-weight: 600;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #3D8BFF;
+        }
+
+        .footer-about p {
+            color: #9ca3af;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: #374151;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: #3D8BFF;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #374151;
+            padding-top: 30px;
+            text-align: center;
+            color: #9ca3af;
+            font-size: 0.9rem;
+        }
+
+        /* ===== RESPONSIVIDADE ===== */
+        @media (max-width: 1024px) {
+            .metrics-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .summary-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-nav {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .metrics-container {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .metrics-controls {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+
+            .page-header p {
+                font-size: 1.1rem;
+            }
+            
+            .summary-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .performance-summary {
+                padding: 30px 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .header-container {
+                padding: 15px 0;
+            }
+
+            .logo-text {
+                font-size: 1.3rem;
+            }
+
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .period-filter {
+                flex-direction: column;
+                align-items: flex-start;
+                width: 100%;
+            }
+            
+            .filter-select {
+                width: 100%;
+            }
+            
+            .download-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* ===== ANIMAÇÕES ===== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- CABEÇALHO -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">M</div>
+                <div class="logo-text">Métricas<span>Semanais</span></div>
+            </a>
+            
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="../Frontend/index.html">Início</a></li>
+                    <li><a href="../Frontend/colaboradores.html">Colaboradores</a></li>
+                </ul>
+            </nav>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main>
+        <div class="container">
+            <!-- Cabeçalho da Página -->
+            <div class="page-header fade-in">
+                <h1>Métricas Semanais</h1>
+                <p>Acompanhe o desempenho e os resultados semanais da nossa equipe. Atualizado toda sexta-feira.</p>
+            </div>
+
+            <!-- Cards de Métricas Semanais (2 linhas de 3 cards) -->
+            <div class="metrics-container">
+                <!-- Card 1 - Semana Atual -->
+                <div class="metric-card highlight fade-in">
+                    <div class="card-week-header">
+                        <div class="week-badge">ANTERIOR</div>
+                        <h3>Semana 6</h3>
+                        <p>30 Nov - 06 Dez 2025</p>
+                    </div>
+                    <div class="card-metrics-body">
+                        <div class="metric-item">
+                            <div class="metric-label">
+                                <span>Tickets Resolvidos</span>
+                                <span class="metric-value">148</span>
+                            </div>
+                            <div class="metric-bar">
+                                <div class="metric-fill green" style="width: 92%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="metric-item">
+                            <div class="metric-label">
+                                <span>SLA Cumprido</span>
+                                <span class="metric-value">96.5%</span>
+                            </div>
+                            <div class="metric-bar">
+                                <div class="metric-fill blue" style="width: 96.5%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="metric-item">
+                            <div class="metric-label">
+                                <span>Satisfação do Cliente</span>
+                                <span class="metric-value">4.7/5.0</span>
+                            </div>
+                            <div class="metric-bar">
+                                <div class="metric-fill orange" style="width: 94%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-week-footer">
+                        <a href="../LucasRossetto/Semana1.html" class="btn-details">
+                            <i class="fas fa-chart-bar"></i>
+                            Ver Detalhes Completos
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+               <div class="metric-card highlight fade-in">
+                    <div class="card-week-header">
+                        <div class="week-badge">ANTERIOR</div>
+                        <h3>Semana 5</h3>
+                        <p>30 Nov - 06 Dez 2025</p>
+                    </div>
+                    <div class="card-metrics-body">
+                        <div class="metric-item">
+                            <div class="metric-label">
+                                <span>Tickets Resolvidos</span>
+                                <span class="metric-value">148</span>
+                            </div>
+                            <div class="metric-bar">
+                                <div class="metric-fill green" style="width: 92%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="metric-item">
+                            <div class="metric-label">
+                                <span>SLA Cumprido</span>
+                                <span class="metric-value">96.5%</span>
+                            </div>
+                            <div class="metric-bar">
+                                <div class="metric-fill blue" style="width: 96.5%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="metric-item">
+                            <div class="metric-label">
+                                <span>Satisfação do Cliente</span>
+                                <span class="metric-value">4.7/5.0</span>
+                            </div>
+                            <div class="metric-bar">
+                                <div class="metric-fill orange" style="width: 94%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-week-footer">
+                        <a href="../WuilianisRodrigues/30_11_A_06_12.html" class="btn-details">
+                            <i class="fas fa-chart-bar"></i>
+                            Ver Detalhes Completos
+                        </a>
+                    </div>
+                </div>
+
+
+                <!-- Card 3 -->
+                <div class="metric-card highlight fade-in">
+                    <div class="card-week-header">
+                        <div class="week-badge">ANTERIOR</div>
+                        <h3>Semana 4</h3>
+                        <p>30 Nov - 06 Dez 2025</p>
+                    </div>
+                    <div class="card-metrics-body">
+                        <div class="metric-item">
+                            <div class="metric-label">
+                                <span>Tickets Resolvidos</span>
+                                <span class="metric-value">148</span>
+                            </div>
+                            <div class="metric-bar">
+                                <div class="metric-fill green" style="width: 92%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="metric-item">
+                            <div class="metric-label">
+                                <span>SLA Cumprido</span>
+                                <span class="metric-value">96.5%</span>
+                            </div>
+                            <div class="metric-bar">
+                                <div class="metric-fill blue" style="width: 96.5%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="metric-item">
+                            <div class="metric-label">
+                                <span>Satisfação do Cliente</span>
+                                <span class="metric-value">4.7/5.0</span>
+                            </div>
+                            <div class="metric-bar">
+                                <div class="metric-fill orange" style="width: 94%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-week-footer">
+                        <a href="../WuilianisRodrigues/30_11_A_06_12.html" class="btn-details">
+                            <i class="fas fa-chart-bar"></i>
+                            Ver Detalhes Completos
+                        </a>
+                    </div>
+                </div>
+
+
+                <!-- Card 4 -->
+               <div class="metric-card highlight fade-in">
+                    <div class="card-week-header">
+                        <div class="week-badge">ANTERIOR</div>
+                        <h3>Semana 3</h3>
+                        <p>30 Nov - 06 Dez 2025</p>
+                    </div>
+                    <div class="card-metrics-body">
+                        <div class="metric-item">
+                            <div class="metric-label">
+                                <span>Tickets Resolvidos</span>
+                                <span class="metric-value">148</span>
+                            </div>
+                            <div class="metric-bar">
+                                <div class="metric-fill green" style="width: 92%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="metric-item">
+                            <div class="metric-label">
+                                <span>SLA Cumprido</span>
+                                <span class="metric-value">96.5%</span>
+                            </div>
+                            <div class="metric-bar">
+                                <div class="metric-fill blue" style="width: 96.5%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="metric-item">
+                            <div class="metric-label">
+                                <span>Satisfação do Cliente</span>
+                                <span class="metric-value">4.7/5.0</span>
+                            </div>
+                            <div class="metric-bar">
+                                <div class="metric-fill orange" style="width: 94%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-week-footer">
+                        <a href="../WuilianisRodrigues/30_11_A_06_12.html" class="btn-details">
+                            <i class="fas fa-chart-bar"></i>
+                            Ver Detalhes Completos
+                        </a>
+                    </div>
+                </div>
+
+
+                <!-- Card 5 -->
+                <div class="metric-card highlight fade-in">
+                    <div class="card-week-header">
+                        <div class="week-badge">ANTERIOR</div>
+                        <h3>Semana 2</h3>
+                        <p>30 Nov - 06 Dez 2025</p>
+                    </div>
+                    <div class="card-metrics-body">
+                        <div class="metric-item">
+                            <div class="metric-label">
+                                <span>Tickets Resolvidos</span>
+                                <span class="metric-value">148</span>
+                            </div>
+                            <div class="metric-bar">
+                                <div class="metric-fill green" style="width: 92%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="metric-item">
+                            <div class="metric-label">
+                                <span>SLA Cumprido</span>
+                                <span class="metric-value">96.5%</span>
+                            </div>
+                            <div class="metric-bar">
+                                <div class="metric-fill blue" style="width: 96.5%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="metric-item">
+                            <div class="metric-label">
+                                <span>Satisfação do Cliente</span>
+                                <span class="metric-value">4.7/5.0</span>
+                            </div>
+                            <div class="metric-bar">
+                                <div class="metric-fill orange" style="width: 94%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-week-footer">
+                        <a href="../WuilianisRodrigues/30_11_A_06_12.html" class="btn-details">
+                            <i class="fas fa-chart-bar"></i>
+                            Ver Detalhes Completos
+                        </a>
+                    </div>
+                </div>
+
+
+                <!-- Card 6 -->
+                <div class="metric-card highlight fade-in">
+                    <div class="card-week-header">
+                        <div class="week-badge">ANTERIOR</div>
+                        <h3>Semana 1</h3>
+                        <p>30 Nov - 06 Dez 2025</p>
+                    </div>
+                    <div class="card-metrics-body">
+                        <div class="metric-item">
+                            <div class="metric-label">
+                                <span>Tickets Resolvidos</span>
+                                <span class="metric-value">148</span>
+                            </div>
+                            <div class="metric-bar">
+                                <div class="metric-fill green" style="width: 92%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="metric-item">
+                            <div class="metric-label">
+                                <span>SLA Cumprido</span>
+                                <span class="metric-value">96.5%</span>
+                            </div>
+                            <div class="metric-bar">
+                                <div class="metric-fill blue" style="width: 96.5%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="metric-item">
+                            <div class="metric-label">
+                                <span>Satisfação do Cliente</span>
+                                <span class="metric-value">4.7/5.0</span>
+                            </div>
+                            <div class="metric-bar">
+                                <div class="metric-fill orange" style="width: 94%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-week-footer">
+                        <a href="../WuilianisRodrigues/30_11_A_06_12.html" class="btn-details">
+                            <i class="fas fa-chart-bar"></i>
+                            Ver Detalhes Completos
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Animação de fade-in para os elementos
+        document.addEventListener('DOMContentLoaded', function() {
+            // Elementos para animação
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            // Função para verificar se o elemento está visível
+            const isElementInViewport = (el) => {
+                const rect = el.getBoundingClientRect();
+                return (
+                    rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.85
+                );
+            };
+            
+            // Função para animar elementos visíveis
+            const animateOnScroll = () => {
+                fadeElements.forEach(element => {
+                    if (isElementInViewport(element)) {
+                        element.classList.add('visible');
+                    }
+                });
+            };
+            
+            // Anima elementos já visíveis no carregamento
+            animateOnScroll();
+            
+            // Adiciona listener para scroll
+            window.addEventListener('scroll', animateOnScroll);
+            
+            // Menu mobile
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mainNav = document.querySelector('.main-nav');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                mainNav.style.display = mainNav.style.display === 'block' ? 'none' : 'block';
+            });
+            
+            // Ajusta menu mobile em redimensionamento
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    mainNav.style.display = '';
+                }
+            });
+            
+            // Simulação de filtro de período
+            const periodSelect = document.getElementById('periodSelect');
+            periodSelect.addEventListener('change', function() {
+                alert('Filtro aplicado para: ' + this.options[this.selectedIndex].text);
+                // Aqui você implementaria a lógica para filtrar as métricas
+            });
+            
+            // Simulação de download de relatório
+            const downloadBtn = document.querySelector('.download-btn');
+            downloadBtn.addEventListener('click', function() {
+                alert('Relatório de métricas será baixado em breve!');
+                // Aqui você implementaria a lógica para gerar e baixar o relatório
+            });
+        });
+    </script>
+</body>
+</html>
