@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colaboradores | Nossa Equipe</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ===== RESET E CONFIGURAÇÕES GERAIS ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8fafc;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== CABEÇALHO ===== */
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #2C6EE6 0%, #3D8BFF 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1F2937;
+        }
+
+        .logo-text span {
+            color: #2C6EE6;
+        }
+
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .main-nav a {
+            text-decoration: none;
+            color: #4B5563;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .main-nav a:hover {
+            color: #2C6EE6;
+        }
+
+        .main-nav a.active {
+            color: #2C6EE6;
+            font-weight: 600;
+        }
+
+        .main-nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(135deg, #2C6EE6 0%, #3D8BFF 100%);
+            border-radius: 2px;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #4B5563;
+            cursor: pointer;
+        }
+
+        /* ===== CONTEÚDO PRINCIPAL ===== */
+        main {
+            flex: 1;
+            padding: 60px 0;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .page-header h1 {
+            font-size: 2.8rem;
+            color: #1F2937;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: #6B7280;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* ===== CARDS DOS COLABORADORES ===== */
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .colaborador-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .colaborador-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, #2C6EE6 0%, #3D8BFF 100%);
+            padding: 25px;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .card-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 4px solid white;
+            margin: 0 auto 15px;
+            overflow: hidden;
+            background-color: #f1f5f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .avatar-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: #2C6EE6;
+            background-color: #e2e8f0;
+        }
+
+        .card-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .card-header p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .card-body {
+            padding: 25px;
+        }
+
+        .card-info {
+            margin-bottom: 20px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .info-item i {
+            color: #2C6EE6;
+            width: 20px;
+            margin-right: 12px;
+            margin-top: 3px;
+        }
+
+        .card-skills {
+            margin-top: 20px;
+        }
+
+        .card-skills h4 {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            color: #4B5563;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background-color: #e0f2fe;
+            color: #0369a1;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .card-footer {
+            padding: 20px 25px;
+            background-color: #f8fafc;
+            border-top: 1px solid #e5e7eb;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .btn-card {
+            padding: 8px 18px;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #2C6EE6 0%, #3D8BFF 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(44, 110, 230, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: #f1f5f9;
+            color: #4B5563;
+        }
+
+        .btn-secondary:hover {
+            background-color: #e2e8f0;
+        }
+
+        .status-indicator {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+
+        .status-online {
+            background-color: #10b981;
+        }
+
+        .status-offline {
+            background-color: #6B7280;
+        }
+
+        .status-away {
+            background-color: #f59e0b;
+        }
+
+        /* ===== RODAPÉ ===== */
+        footer {
+            background-color: #1F2937;
+            color: #f9fafb;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: white;
+            font-weight: 600;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #3D8BFF;
+        }
+
+        .footer-about p {
+            color: #9ca3af;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: #374151;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: #3D8BFF;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #374151;
+            padding-top: 30px;
+            text-align: center;
+            color: #9ca3af;
+            font-size: 0.9rem;
+        }
+
+        /* ===== RESPONSIVIDADE ===== */
+        @media (max-width: 1024px) {
+            .cards-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-nav {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .cards-container {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+
+            .page-header p {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .header-container {
+                padding: 15px 0;
+            }
+
+            .logo-text {
+                font-size: 1.3rem;
+            }
+
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .card-footer {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .btn-card {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- CABEÇALHO -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">N</div>
+                <div class="logo-text">Time<span>Bitz</span></div>
+            </a>
+            
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="colaboradores.html" class="active">Colaboradores</a></li>
+                    <li><a href="metricas.html">Métricas</a></li>
+                </ul>
+            </nav>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main>
+        <div class="container">
+            <!-- Cabeçalho da Página -->
+            <div class="page-header fade-in">
+                <h1>Colaboradores</h1>
+                <p>Conheça nossa equipe de profissionais dedicados que fazem a diferença no dia a dia da empresa</p>
+            </div>
+
+            <!-- Cards dos Colaboradores -->
+            <div class="cards-container">
+                <!-- Card 1 -->
+                <div class="colaborador-card fade-in">
+                    <div class="card-header">
+                        <div class="card-avatar">
+                            <div class="avatar-placeholder">
+                                <i class="fas fa-user"></i>
+                            </div>
+                        </div>
+                        <h3>Lucas Rossetto</h3>
+                        <p>Analista de Suporte N1</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-skills">
+                            <h4>Habilidades Principais</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Comunicação</span>
+                                <span class="skill-tag">Empatia</span>
+                                <span class="skill-tag">Satisfação</span>
+                                <span class="skill-tag"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a href="../LucasRossetto/page.html" class="btn-card btn-primary">Ver Perfil Completo</a>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="colaborador-card fade-in">
+                    <div class="card-header">
+                        <div class="card-avatar">
+                            <div class="avatar-placeholder">
+                                <i class="fas fa-user"></i>
+                            </div>
+                        </div>
+                        <h3>Isaque Rossetto</h3>
+                        <p>Analista de Suporte N1</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-skills">
+                            <h4>Habilidades Principais:</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Agilidade</span>
+                                <span class="skill-tag">Scrum</span>
+                                <span class="skill-tag">Jira</span>
+                                <span class="skill-tag">Liderança</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a href="../IsaqueRossetto/page.html" class="btn-card btn-primary">Ver Perfil Completo</a>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="colaborador-card fade-in">
+                    <div class="card-header">
+                        <div class="card-avatar">
+                            <div class="avatar-placeholder">
+                                <i class="fas fa-user"></i>
+                            </div>
+                        </div>
+                        <h3>Wuilianis Rodrigues</h3>
+                        <p>Analista de Suporte N1</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-skills">
+                            <h4>Habilidades Principais:</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Focada</span>
+                                <span class="skill-tag">Decisiva</span>
+                                <span class="skill-tag">Empenhada</span>
+                                <span class="skill-tag"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a href="../WuilianisRodrigues/page.html" class="btn-card btn-primary">Ver Perfil Completo</a>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="colaborador-card fade-in">
+                    <div class="card-header">
+                        <div class="card-avatar">
+                            <div class="avatar-placeholder">
+                                <i class="fas fa-user"></i>
+                            </div>
+                        </div>
+                        <h3>Elaine Uchoa</h3>
+                        <p>Analista de Suporte N1</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-skills">
+                            <h4>Habilidades Principais:</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag"></span>
+                                <span class="skill-tag"></span>
+                                <span class="skill-tag"></span>
+                                <span class="skill-tag"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a href="../ElaineUchoa/page.html" class="btn-card btn-primary">Ver Perfil Completo</a>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="colaborador-card fade-in">
+                    <div class="card-header">
+                        <div class="card-avatar">
+                            <div class="avatar-placeholder">
+                                <i class="fas fa-user"></i>
+                            </div>
+                        </div>
+                        <h3>Henri Andrade</h3>
+                        <p>Analista de Suporte N1</p>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="card-skills">
+                            <h4>Habilidades Principais:</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Analitico</span>
+                                <span class="skill-tag"></span>
+                                <span class="skill-tag"></span>
+                                <span class="skill-tag"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a href="../HenriAndrade/page.html" class="btn-card btn-primary">Ver Perfil Completo</a>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="colaborador-card fade-in">
+                    <div class="card-header">
+                        <div class="card-avatar">
+                            <div class="avatar-placeholder">
+                                <i class="fas fa-user"></i>
+                            </div>
+                        </div>
+                        <h3>Emanuel Skunieczny</h3>
+                        <p>Analista de Suporte N1</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-skills">
+                            <h4>Habilidades Principais:</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Analitico</span>
+                                <span class="skill-tag"></span>
+                                <span class="skill-tag"></span>
+                                <span class="skill-tag"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a href="../EmanuelSkunieczny/page.html" class="btn-card btn-primary">Ver Perfil Completo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Sobre Nós</h3>
+                    <div class="footer-about">
+                        <p>Somos uma empresa dedicada a fornecer soluções inovadoras e de alta qualidade para nossos clientes, com uma equipe de profissionais altamente qualificados.</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/company/bitzsoftwares/"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Links Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Página Inicial</a></li>
+                        <li><a href="colaboradores.html">Colaboradores</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contato</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> Parque Tecnológico - R. Lídio Oltramari, 1628 - Fraron, Pato Branco - PR</li>
+                        <li><i class="fas fa-phone"></i> (46) 3025-2515</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Bitz Softwares. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Animação de fade-in para os cards
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const fadeInOnScroll = function() {
+                fadeElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = 150;
+                    
+                    if (elementTop < window.innerHeight - elementVisible) {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+            
+            // Define a animação inicial para os elementos
+            fadeElements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            });
+            
+            window.addEventListener('scroll', fadeInOnScroll);
+            fadeInOnScroll(); // Executa uma vez ao carregar
+            
+            // Menu mobile
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mainNav = document.querySelector('.main-nav');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                mainNav.style.display = mainNav.style.display === 'block' ? 'none' : 'block';
+            });
+            
+            // Ajusta menu mobile em redimensionamento
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    mainNav.style.display = '';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
