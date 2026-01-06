@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitz Softwares - Sistema de Feedback</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #0f172a;
+            --accent: #f59e0b;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --border-radius: 8px;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f1f5f9;
+            color: #334155;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo-icon {
+            color: var(--primary);
+            font-size: 28px;
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+        
+        .logo-text span {
+            color: var(--primary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--secondary);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--primary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        /* Section Styles */
+        section {
+            margin-bottom: 60px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--secondary);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+            margin: 10px auto;
+            border-radius: 2px;
+        }
+        
+        /* Company Values */
+        .values-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .value-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .value-icon {
+            font-size: 32px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .value-title {
+            font-size: 22px;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+        
+        /* Performance Report */
+        .performance-report {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+            margin-bottom: 40px;
+        }
+        
+        .employee-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        .employee-name {
+            font-size: 28px;
+            color: var(--secondary);
+        }
+        
+        .period {
+            font-size: 18px;
+            color: var(--gray);
+        }
+        
+        /* Metrics */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .metric-card {
+            background-color: #f8fafc;
+            border-radius: var(--border-radius);
+            padding: 25px;
+            border-left: 5px solid var(--primary);
+        }
+        
+        .metric-card.warning {
+            border-left-color: var(--warning);
+        }
+        
+        .metric-card.success {
+            border-left-color: var(--success);
+        }
+        
+        .metric-title {
+            font-size: 16px;
+            color: var(--gray);
+            margin-bottom: 10px;
+        }
+        
+        .metric-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 5px;
+        }
+        
+        .metric-target {
+            font-size: 14px;
+            color: var(--gray);
+        }
+        
+        .metric-target .target {
+            font-weight: 600;
+        }
+        
+        .observations {
+            background-color: #f0f9ff;
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin-bottom: 30px;
+            border-left: 5px solid var(--accent);
+        }
+        
+        .observations h3 {
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+        
+        /* Action Plans */
+        .action-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .action-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+        }
+        
+        .action-card h4 {
+            color: var(--secondary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .action-card h4 i {
+            color: var(--primary);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--secondary);
+            color: white;
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 20px;
+            color: var(--light);
+        }
+        
+        .footer-section p {
+            opacity: 0.8;
+            margin-bottom: 15px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.7;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .employee-info {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+        }
+        
+        /* Print Styles */
+        @media print {
+            header, footer, nav {
+                display: none;
+            }
+            
+            .hero {
+                background: none;
+                color: black;
+                padding: 20px 0;
+            }
+            
+            .performance-report {
+                box-shadow: none;
+                border: 1px solid #ccc;
+            }
+        }
+
+        .back-button {
+            display: inline-block;
+            background: #95a5a6;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            transition: background 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-chart-line logo-icon"></i>
+                    <div class="logo-text">Bitz<span>Softwares</span></div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="../index.html">Início</a></li>
+                        <li><a href="../Colaboradores.html">Colaboradores</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Análise de Desempenho Semanal</h1>
+            <p>Sistema de gestão de propriedades e feedback para melhores resultados no setor de hospitalidade</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Botão Voltar -->
+        <a href="../IsaqueRossetto/page.html" class="back-button">← Voltar</a>
+     </div>
+
+    <div class="container">
+        <!-- Company Mission & Values -->
+        <section id="mission">
+            <h2 class="section-title">Nossa Empresa</h2>
+            
+            <div class="values-container">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3 class="value-title">MISSÃO</h3>
+                    <p>Alavancar a produtividade e rentabilidade dos clientes, entregando a melhor qualidade no produto e no atendimento.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3 class="value-title">PROPÓSITO</h3>
+                    <p>Construir o melhor sistema de gestão de propriedades e transmitir conhecimento ao mercado, proporcionando melhores resultados ao setor de hospitalidade.</p>
+                </div>
+            </div>
+            
+            <h2 class="section-title">Nossos Valores</h2>
+            
+            <div class="values-container">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="value-title">CORAGEM</h3>
+                    <p>Não omitimos nossos erros, assim aprendemos e crescemos. Somos ambiciosos e temos tesão pela jornada.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="value-title">COMPROMETIMENTO</h3>
+                    <p>Fazemos o que precisa ser feito, com responsabilidade e sem desculpas. Não nos limitamos apenas ao que é nossa responsabilidade. Trabalhamos com disciplina.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="value-title">INOVAÇÃO</h3>
+                    <p>Temos processos bem estruturados com metodologias ágeis, buscando evolução e resultado. Buscamos um crescimento contínuo e escalável.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <h3 class="value-title">HONESTIDADE</h3>
+                    <p>Não compactuamos com fofoca e mentiras. Quem quer faz, quem não quer, acha desculpas. Pensamos no coletivo, de acordo com o que é melhor para a empresa e cliente.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="value-title">AGILIDADE</h3>
+                    <p>Buscamos sempre uma solução rápida e eficaz, focadas no resultado.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3 class="value-title">QUALIDADE</h3>
+                    <p>Nosso cliente sempre está em primeiro lugar. Temos um alto padrão de qualidade. Priorizamos o desenvolvimento dos colaboradores e de todos os parceiros da empresa.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Performance Report -->
+        <section id="performance">
+            <h2 class="section-title">Análise de Desempenho Semanal Individual</h2>
+            
+            <div class="performance-report">
+                <div class="employee-info">
+                    <div>
+                        <h3 class="employee-name">Wuilianis Rodrigues</h3>
+                        <p class="period">Período: 30/11/2025 à 06/12/2025</p>
+                    </div>
+                    <div>
+                        <div class="logo">
+                            <i class="fas fa-chart-line logo-icon"></i>
+                            <div class="logo-text">Bitz<span>Softwares</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="metrics-grid">
+                    <div class="metric-card warning">
+                        <div class="metric-title">Taxa de Resolução</div>
+                        <div class="metric-value">89,8%</div>
+                        <div class="metric-target">
+                            Meta: <span class="target">90%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card success">
+                        <div class="metric-title">Satisfação do Cliente</div>
+                        <div class="metric-value">5,0</div>
+                        <div class="metric-target">
+                            Meta: <span class="target">Acima de 4,5</span>
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card warning">
+                        <div class="metric-title">Atendimentos Avaliados</div>
+                        <div class="metric-value">8,16%</div>
+                        <div class="metric-target">
+                            Meta: <span class="target">30%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card warning">
+                        <div class="metric-title">Tempo Médio de Atendimento</div>
+                        <div class="metric-value">41min 20s</div>
+                        <div class="metric-target">
+                            Meta: <span class="target">37 min</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="observations">
+                    <h3>Observações Gerais</h3>
+                    <p><strong>Visão Geral das Métricas:</strong> Tickets Abertos: 49 | Tickets Resolvidos: 44 | Taxa de Resolução: 89,8% | Média de Avaliação: 5,0 | % de Atendimentos Avaliados: 8,16% | Tempo Médio de Atendimento: 41min 20seg</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feedback Section -->
+        <section id="feedback">
+            <h2 class="section-title">Avaliação de Desempenho</h2>
+            
+            <div class="values-container">
+                <div class="value-card">
+                    <h3 class="value-title">Taxa de Resolução</h3>
+                    <p><strong>Desempenho Atual:</strong> 89,8%</p>
+                    <p><strong>Observações:</strong> A taxa de resolução de Wuilianis Rodrigues está ligeiramente abaixo da meta (diferença de 0,2%). Indica uma alta capacidade de resolução, mas há uma pequena oportunidade para garantir que nenhum caso passível de solução no primeiro contato seja deixado de lado.</p>
+                </div>
+                
+                <div class="value-card">
+                    <h3 class="value-title">Satisfação do Cliente</h3>
+                    <p><strong>Desempenho Atual:</strong> 5,0</p>
+                    <p><strong>Observações:</strong> Excelente desempenho! A média de avaliação está no máximo, superando a meta estabelecida. Este é um indicador forte de que a qualidade do atendimento prestado, quando avaliado, atende plenamente e excede as expectativas do cliente.</p>
+                </div>
+                
+                <div class="value-card">
+                    <h3 class="value-title">% de Atendimentos Avaliados</h3>
+                    <p><strong>Desempenho Atual:</strong> 8,16%</p>
+                    <p><strong>Observações:</strong> A porcentagem de atendimentos avaliados está significativamente abaixo da meta. Com apenas 4 avaliações em 49 atendimentos, há uma grande oportunidade de capturar mais feedback.</p>
+                </div>
+                
+                <div class="value-card">
+                    <h3 class="value-title">Tempo Médio de Atendimento</h3>
+                    <p><strong>Desempenho Atual:</strong> 41min 20seg</p>
+                    <p><strong>Observações:</strong> O tempo médio de atendimento está ligeiramente acima da meta. Embora próximo do limite, sugere uma oportunidade para analisar a eficiência dos processos.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Action Plans -->
+        <section id="actions">
+            <h2 class="section-title">Áreas de Melhoria e Ações Recomendadas</h2>
+            
+            <div class="action-grid">
+                <div class="action-card">
+                    <h4><i class="fas fa-bullseye"></i> Pontos Positivos</h4>
+                    <p>A satisfação do cliente é excepcional, com média de avaliação perfeita (5,0), demonstrando uma grande capacidade de gerar um excelente momento de experiência para o cliente durante o atendimento. A taxa de resolução (89,8%) também é muito forte e próxima da meta.</p>
+                </div>
+                
+                <div class="action-card">
+                    <h4><i class="fas fa-exclamation-triangle"></i> Áreas de Melhoria</h4>
+                    <p>A porcentagem de atendimentos avaliados (8,16%) está muito baixa, o que impede uma visão mais ampla e confiável da satisfação geral. Além disso, o tempo médio de atendimento (41min 20s) ultrapassou a meta, indicando uma oportunidade para ganhos de eficiência.</p>
+                </div>
+                
+                <div class="action-card">
+                    <h4><i class="fas fa-clipboard-list"></i> Planos de Ação</h4>
+                    <ul>
+                        <li>Aumentar a % de Atendimentos Avaliados para pelo menos 15%</li>
+                        <li>Reduzir o tempo médio de atendimento para abaixo de 40 minutos</li>
+                        <li>Elevar a taxa de resolução para 91% ou mais</li>
+                        <li>Manter a excelência na satisfação do cliente</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="observations" style="margin-top: 30px;">
+                <h3>Resumo</h3>
+                <p>Wuilianis Rodrigues demonstra uma habilidade notável em satisfazer o cliente, como comprovado pela média de avaliação máxima (5,0). No entanto, o desempenho atual apresenta desafios claros na eficiência operacional (tempo médio acima da meta) e, principalmente, na captação de feedback (taxa de avaliação muito baixa), o que obscurece a representatividade dos dados positivos. Focando em ações práticas para incentivar avaliações e otimizar o tempo de resolução, Wuilianis tem todas as condições de alinhar todos os indicadores às metas, traduzindo sua alta capacidade de satisfação em um desempenho integralmente excelente e mensurável.</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Bitz Softwares</h3>
+                    <p>Sistema de gestão de propriedades e análise de desempenho para o setor de hospitalidade.</p>
+                    <p>Transformando dados em resultados excepcionais.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contato</h3>
+                    <p><i class="fas fa-envelope"></i> contato@bitzsoftwares.com</p>
+                    <p><i class="fas fa-phone"></i> (11) 99999-9999</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Valores</h3>
+                    <p>Coragem, Comprometimento, Inovação, Honestidade, Agilidade e Qualidade.</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Bitz Softwares. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Função para destacar a seção ativa no menu
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+            
+            window.addEventListener('scroll', function() {
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (pageYOffset >= (sectionTop - 200)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+            
+            // Adicionar estilos para link ativo
+            const style = document.createElement('style');
+            style.innerHTML = `
+                nav a.active {
+                    color: var(--primary) !important;
+                    border-bottom: 2px solid var(--primary);
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // Adicionar funcionalidade de impressão
+            const printButton = document.createElement('button');
+            printButton.innerHTML = '<i class="fas fa-print"></i> Imprimir Relatório';
+            printButton.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background: var(--primary);
+                color: white;
+                border: none;
+                padding: 12px 20px;
+                border-radius: 50px;
+                cursor: pointer;
+                box-shadow: var(--shadow);
+                z-index: 99;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                font-weight: 600;
+            `;
+            printButton.addEventListener('click', function() {
+                window.print();
+            });
+            document.body.appendChild(printButton);
+        });
+    </script>
+</body>
+</html>
