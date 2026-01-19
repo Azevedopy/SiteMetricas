@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bitz Softwares - Análise de Desempenho da Equipe</title>
+    <title>Bitz Softwares - Resumo Geral de Desempenho da Equipe</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" href="../grafico-de-barras.png" type="image/x-icon">
     <style>
@@ -35,7 +35,7 @@
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 0 20px;
         }
@@ -137,6 +137,65 @@
             border-radius: 2px;
         }
         
+        /* Performance Table */
+        .performance-table-container {
+            overflow-x: auto;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow);
+            border-radius: var(--border-radius);
+        }
+        
+        .performance-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            min-width: 1000px;
+        }
+        
+        .performance-table th {
+            background-color: var(--primary);
+            color: white;
+            padding: 20px 15px;
+            text-align: center;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+        }
+        
+        .performance-table td {
+            padding: 18px 15px;
+            text-align: center;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .performance-table tbody tr:hover {
+            background-color: #f8fafc;
+        }
+        
+        .performance-table .agent-name {
+            text-align: left;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+        
+        .status-icon {
+            display: inline-block;
+            margin-left: 8px;
+            font-size: 16px;
+        }
+        
+        .status-success {
+            color: var(--success);
+        }
+        
+        .status-warning {
+            color: var(--warning);
+        }
+        
+        .status-danger {
+            color: var(--danger);
+        }
+        
         /* Company Values */
         .values-container {
             display: grid;
@@ -168,59 +227,6 @@
             font-size: 22px;
             color: var(--secondary);
             margin-bottom: 15px;
-        }
-        
-        /* Table Styles */
-        .team-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 40px;
-            background-color: white;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-        }
-        
-        .team-table th {
-            background-color: var(--primary);
-            color: white;
-            padding: 15px;
-            text-align: left;
-            font-weight: 600;
-        }
-        
-        .team-table td {
-            padding: 15px;
-            border-bottom: 1px solid #e2e8f0;
-        }
-        
-        .team-table tr:last-child td {
-            border-bottom: none;
-        }
-        
-        .team-table tr:hover {
-            background-color: #f8fafc;
-        }
-        
-        .performance-metric {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-        }
-        
-        .metric-success {
-            color: var(--success);
-            font-weight: 600;
-        }
-        
-        .metric-warning {
-            color: var(--warning);
-            font-weight: 600;
-        }
-        
-        .metric-danger {
-            color: var(--danger);
-            font-weight: 600;
         }
         
         /* Metrics */
@@ -311,6 +317,36 @@
             color: var(--primary);
         }
         
+        /* Summary Grid */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .summary-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .summary-card h4 {
+            color: var(--secondary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .summary-card h4 i {
+            color: var(--primary);
+        }
+        
         /* Footer */
         footer {
             background-color: var(--secondary);
@@ -365,9 +401,9 @@
                 font-size: 18px;
             }
             
-            .team-table {
-                display: block;
-                overflow-x: auto;
+            .performance-table-container {
+                margin: 0 -20px;
+                border-radius: 0;
             }
         }
         
@@ -383,7 +419,7 @@
                 padding: 20px 0;
             }
             
-            .performance-report {
+            .performance-table-container {
                 box-shadow: none;
                 border: 1px solid #ccc;
             }
@@ -404,99 +440,60 @@
             background: #7f8c8d;
         }
         
-        .metric-info {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 8px;
-        }
-        
-        .metric-label {
-            font-weight: 600;
-            color: var(--secondary);
-        }
-        
-        .metric-number {
-            font-weight: 700;
-            color: var(--primary);
-        }
-        
         .divider {
             height: 1px;
             background-color: #e2e8f0;
             margin: 25px 0;
         }
         
-        .legend {
-            display: flex;
-            justify-content: center;
+        .team-summary-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 20px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
+            margin: 30px 0;
         }
         
-        .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .legend-color {
-            width: 20px;
-            height: 20px;
-            border-radius: 4px;
-        }
-        
-        .legend-success {
-            background-color: var(--success);
-        }
-        
-        .legend-warning {
-            background-color: var(--warning);
-        }
-        
-        .legend-danger {
-            background-color: var(--danger);
-        }
-        
-        .action-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
+        .team-stat {
             background-color: white;
             border-radius: var(--border-radius);
-            overflow: hidden;
+            padding: 20px;
+            text-align: center;
             box-shadow: var(--shadow);
         }
         
-        .action-table th {
-            background-color: var(--primary);
-            color: white;
-            padding: 12px;
-            text-align: left;
-            font-weight: 600;
+        .team-stat-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 5px;
         }
         
-        .action-table td {
-            padding: 12px;
-            border-bottom: 1px solid #e2e8f0;
+        .team-stat-label {
+            font-size: 14px;
+            color: var(--gray);
         }
         
-        .action-table tr:last-child td {
-            border-bottom: none;
+        .highlight {
+            background-color: #f0f9ff;
+            padding: 10px 15px;
+            border-radius: 6px;
+            margin: 10px 0;
+            border-left: 4px solid var(--primary);
         }
         
-        .team-highlight {
-            background-color: #f0fff4;
-            font-weight: 600;
+        .highlight.danger {
+            background-color: #fff5f5;
+            border-left-color: var(--danger);
         }
         
-        .team-caution {
-            background-color: #fff7ed;
+        .highlight.warning {
+            background-color: #fffbeb;
+            border-left-color: var(--warning);
         }
         
-        .team-critical {
-            background-color: #fee2e2;
+        .highlight.success {
+            background-color: #f0fdf4;
+            border-left-color: var(--success);
         }
     </style>
 </head>
@@ -522,355 +519,344 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h1>Análise de Desempenho da Equipe</h1>
-            <p>Visão consolidada do desempenho semanal da equipe de atendimento</p>
-            <p>Período: 04/01/2026 à 10/01/2026</p>
+            <h1>Resumo Geral de Desempenho - Equipe de Atendimento</h1>
+            <p>Análise comparativa e visão consolidada do desempenho da equipe de atendimento</p>
         </div>
     </section>
 
     <div class="container">
         <!-- Botão Voltar -->
-        <a href="../index.html" class="back-button">← Voltar</a>
-        
-        <!-- Legend -->
-        <div class="legend">
-            <div class="legend-item">
-                <div class="legend-color legend-warning"></div>
-                <span>Necessita atenção</span>
-            </div>
-            <div class="legend-item">
-                <div class="legend-color legend-danger"></div>
-                <span>Crítico - Atenção prioritária</span>
-            </div>
-        </div>
+        <a href="../index.html" class="back-button">← Voltar para Início</a>
+    </div>
 
-        <!-- Company Mission & Values -->
-        <section id="mission">
-            <h2 class="section-title">Nossa Empresa</h2>
+    <div class="container">
+        <!-- Estatísticas da Equipe -->
+        <section id="team-stats">
+            <h2 class="section-title">Visão Geral Comparativa dos Agentes</h2>
             
-            <div class="values-container">
-                <div class="value-card">
-                    <div class="value-icon">
-                        <i class="fas fa-bullseye"></i>
-                    </div>
-                    <h3 class="value-title">MISSÃO</h3>
-                    <p>Alavancar a produtividade e rentabilidade dos clientes, entregando a melhor qualidade no produto e no atendimento.</p>
+            <div class="team-summary-stats">
+                <div class="team-stat">
+                    <div class="team-stat-value">914</div>
+                    <div class="team-stat-label">Chats Atendidos</div>
                 </div>
-                
-                <div class="value-card">
-                    <div class="value-icon">
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h3 class="value-title">PROPÓSITO</h3>
-                    <p>Construir o melhor sistema de gestão de propriedades e transmitir conhecimento ao mercado, proporcionando melhores resultados ao setor de hospitalidade.</p>
-                </div>
-            </div>
-            
-            <h2 class="section-title">Nossos Valores</h2>
-            
-            <div class="values-container">
-                <div class="value-card">
-                    <div class="value-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3 class="value-title">CORAGEM</h3>
-                    <p>Não omitimos nossos erros, assim aprendemos e crescemos. Somos ambiciosos e temos tesão pela jornada.</p>
-                </div>
-                
-                <div class="value-card">
-                    <div class="value-icon">
-                        <i class="fas fa-handshake"></i>
-                    </div>
-                    <h3 class="value-title">COMPROMETIMENTO</h3>
-                    <p>Fazemos o que precisa ser feito, com responsabilidade e sem desculpas. Não nos limitamos apenas ao que é nossa responsabilidade. Trabalhamos com disciplina.</p>
-                </div>
-                
-                <div class="value-card">
-                    <div class="value-icon">
-                        <i class="fas fa-lightbulb"></i>
-                    </div>
-                    <h3 class="value-title">INOVAÇÃO</h3>
-                    <p>Temos processos bem estruturados com metodologias ágeis, buscando evolução e resultado. Buscamos um crescimento contínuo e escalável, curtindo a nossa jornada, através da evolução como pessoa e da performance como profissional.</p>
-                </div>
-                
-                <div class="value-card">
-                    <div class="value-icon">
-                        <i class="fas fa-user-check"></i>
-                    </div>
-                    <h3 class="value-title">HONESTIDADE</h3>
-                    <p>Não compactuamos com fofoca e mentiras. Quem quer faz, quem não quer, acha desculpas. Pensamos no coletivo, de acordo com o que é melhor para a empresa e cliente.</p>
-                </div>
-                
-                <div class="value-card">
-                    <div class="value-icon">
-                        <i class="fas fa-bolt"></i>
-                    </div>
-                    <h3 class="value-title">AGILIDADE</h3>
-                    <p>Buscamos sempre uma solução rápida e eficaz, focadas no resultado.</p>
-                </div>
-                
-                <div class="value-card">
-                    <div class="value-icon">
-                        <i class="fas fa-award"></i>
-                    </div>
-                    <h3 class="value-title">QUALIDADE</h3>
-                    <p>Nosso cliente sempre está em primeiro lugar. Temos um alto padrão de qualidade. Priorizamos o desenvolvimento dos colaboradores e de todos os parceiros da empresa.</p>
-                </div>
-            </div>
-        </section>
 
-        <!-- Performance Overview -->
-        <section id="overview">
-            <h2 class="section-title">Visão Geral da Equipe</h2>
-            
-            <table class="team-table">
-                <thead>
-                    <tr>
-                        <th>Atendente</th>
-                        <th>Taxa de Resolução</th>
-                        <th>Média de Avaliação</th>
-                        <th>% de Avaliações</th>
-                        <th>Tempo Médio de Atendimento</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="team-caution">
-                        <td>Isaque Rossetto</td>
-                        <td><span class="performance-metric"><span class="metric-success">94.29%</span> ✅</span></td>
-                        <td><span class="performance-metric"><span class="metric-success">4.8</span> ✅</span></td>
-                        <td><span class="performance-metric"><span class="metric-danger">7.14%</span> ⚠️</span></td>
-                        <td><span class="performance-metric"><span class="metric-danger">52min 45seg</span> ⚠️</span></td>
-                    </tr>
-                    <tr class="team-caution">
-                        <td>Lucas Rossetto</td>
-                        <td><span class="performance-metric"><span class="metric-success">92.61%</span> ✅</span></td>
-                        <td><span class="performance-metric"><span class="metric-warning">4.35</span></span></td>
-                        <td><span class="performance-metric"><span class="metric-danger">7.39%</span> ⚠️</span></td>
-                        <td><span class="performance-metric"><span class="metric-danger">48min 59seg</span> ⚠️</span></td>
-                    </tr>
-                    <tr class="team-caution">
-                        <td>Wuilianis Rodrigues</td>
-                        <td><span class="performance-metric"><span class="metric-warning">90.48%</td>
-                        <td><span class="performance-metric"><span class="metric-danger">3.0</span> ⚠️</span></td>
-                        <td><span class="performance-metric"><span class="metric-danger">2.38%</span> ⚠️</span></td>
-                        <td><span class="performance-metric"><span class="metric-danger">57min 30seg</span> ⚠️</span></td>
-                    </tr>
-                    <tr class="team-caution">
-                        <td>Elaine Uchoa</td>
-                        <td><span class="performance-metric"><span class="metric-warning">86.95%</span></span></td>
-                        <td><span class="performance-metric"><span class="metric-warning">4.3</span></span></td>
-                        <td><span class="performance-metric"><span class="metric-danger">3.38%</span> ⚠️</span></td>
-                        <td><span class="performance-metric"><span class="metric-danger">1h 12min</span> ⚠️</span></td>
-                    </tr>
-                    <tr class="team-critical">
-                        <td>Emanuel Skunieczny</td>
-                        <td><span class="performance-metric"><span class="metric-danger">83.16%</span> ⚠️</span></td>
-                        <td><span class="performance-metric"><span class="metric-danger">2.6</span> ⚠️</span></td>
-                        <td><span class="performance-metric"><span class="metric-danger">5.26%</span> ⚠️</span></td>
-                        <td><span class="performance-metric"><span class="metric-warning">32min 26seg</td>
-                    </tr>
-                    <tr class="team-highlight">
-                        <td><strong>META</strong></td>
-                        <td><strong>92%</strong></td>
-                        <td><strong>> 4.5</strong></td>
-                        <td><strong>30%</strong></td>
-                        <td><strong>30 min</strong></td>
-                    </tr>
-                </tbody>
-            </table>
-            
-            <div class="observations">
-                <h3>Resumo Executivo</h3>
-                <p><strong>Taxa média de avaliações da equipe: 5.1%</strong> - Este é o pior indicador coletivo, nenhum atendente sequer atinge 10% da meta.</p>
-                <p><strong>Competência técnica:</strong> 3/5 atendentes atingem ou superam a meta de resolução (92%).</p>
-                <p><strong>Qualidade desigual:</strong> Enquanto Isaque tem nota 4.8, Emanuel e Wuilianis estão abaixo de 3.0.</p>
-                <p><strong>Correlação negativa identificada:</strong> Emanuel (mais rápido) tem a pior nota. Elaine (mais lenta) tem nota média. Sugere troca inadequada entre velocidade e qualidade.</p>
-            </div>
-        </section>
-
-        <!-- Comparative Analysis -->
-        <section id="comparative">
-            <h2 class="section-title">Análise Comparativa por Indicador</h2>
-            
-            <div class="values-container">
-                <div class="value-card">
-                    <h3 class="value-title">1. Taxa de Resolução (Meta: 92%)</h3>
-                    <p><strong>Alto Desempenho:</strong> Isaque (94.29%) e Lucas (92.61%) são exemplares, atuando como referência técnica.</p>
-                    <p><strong>No Limiar:</strong> Wuilianis (90.48%) atinge a meta mínima, mas sem margem de segurança.</p>
-                    <p><strong>Abaixo da Meta:</strong> Elaine (86.95%) e Emanuel (83.16%) indicam necessidade de fortalecer a resolução no primeiro contato. Emanuel tem a maior lacuna.</p>
+                <div class="team-stat">
+                    <div class="team-stat-value">766</div>
+                    <div class="team-stat-label">Resolvidos 1° Atedimendo</div>
                 </div>
                 
-                <div class="value-card">
-                    <h3 class="value-title">2. Satisfação do Cliente (Meta: > 4.5)</h3>
-                    <p><strong>Excelência:</strong> Isaque (4.8) possui o padrão ouro de qualidade no atendimento.</p>
-                    <p><strong>Bom, mas Aprimorável:</strong> Lucas (4.35) e Elaine (4.3) estão próximos, mas não atingem a meta.</p>
-                    <p><strong>Área Crítica:</strong> Wuilianis (3.0) e Emanuel (2.6) apresentam notas que sinalizam insatisfação recorrente, exigindo intervenção urgente.</p>
+                <div class="team-stat">
+                    <div class="team-stat-value">83,81%</div>
+                    <div class="team-stat-label">Taxa Resolução Média</div>
                 </div>
                 
-                <div class="value-card">
-                    <h3 class="value-title">3. % de Avaliações (Meta: 30%)</h3>
-                    <p><strong>Desafio Comum a Todos:</strong> Este é o pior indicador coletivo. Nenhum atendente sequer atinge 10% da meta. Lucas (7.39%) tem a melhor taxa, mas ainda é extremamente baixa.</p>
-                    <p>Isso inviabiliza qualquer análise robusta de satisfação e esconde potenciais problemas ou méritos.</p>
+                <div class="team-stat">
+                    <div class="team-stat-value">4,48</div>
+                    <div class="team-stat-label">Avaliação Média</div>
                 </div>
                 
-                <div class="value-card">
-                    <h3 class="value-title">4. Tempo Médio de Atendimento (Meta: 30 min)</h3>
-                    <p><strong>Eficiência Exemplar:</strong> Emanuel (32min26seg) é o mais ágil, um caso para estudo de boas práticas em agilidade.</p>
-                    <p><strong>Dentro de um Patamar Aceitável:</strong> Lucas (48min59seg) e Isaque (52min45seg) têm tempos próximos, mas ainda acima da meta.</p>
-                    <p><strong>Oportunidade de Otimização:</strong> Wuilianis (57min30seg) e, principalmente, Elaine (1h12min) têm tempos que impactam a produtividade e a capacidade de resposta da equipe.</p>
+                <div class="team-stat">
+                    <div class="team-stat-value">5,50%</div>
+                    <div class="team-stat-label">Avaliações Coletadas</div>
+                </div>
+                
+                <div class="team-stat">
+                    <div class="team-stat-value">51min 39s</div>
+                    <div class="team-stat-label">Tempo Médio</div>
                 </div>
             </div>
-        </section>
-
-        <!-- Diagnosis -->
-        <section id="diagnosis">
-            <h2 class="section-title">Diagnóstico e Áreas de Melhoria da Equipe</h2>
             
-            <div class="action-grid">
-                <div class="action-card">
-                    <h4><i class="fas fa-check-circle"></i> Pontos Fortes Coletivos</h4>
-                    <ul style="padding-left: 20px; margin-top: 10px;">
-                        <li><strong>Competência Técnica:</strong> A maioria (3/5) atinge ou supera a meta de resolução.</li>
-                        <li><strong>Agilidade Potencial:</strong> A performance de Emanuel prova que a meta de tempo é atingível.</li>
-                        <li><strong>Talentos Complementares:</strong> Isaque (qualidade máxima), Emanuel (velocidade máxima) e Lucas (equilíbrio).</li>
-                    </ul>
-                </div>
-                
-                <div class="action-card">
-                    <h4><i class="fas fa-exclamation-triangle"></i> Principais Desafios</h4>
-                    <ol style="padding-left: 20px; margin-top: 10px;">
-                        <li><strong>Falta de Feedback do Cliente (Crítico):</strong> Taxa média de apenas 5.1%. Sem dados, gerenciamos no escuro.</li>
-                        <li><strong>Qualidade Desigual:</strong> Grande variação nas notas de satisfação (2.6 a 4.8).</li>
-                        <li><strong>Eficiência Variável:</strong> Disparidade nos tempos de atendimento (32min a 1h12min).</li>
-                        <li><strong>Correlação Negativa:</strong> Troca inadequada entre velocidade e qualidade que precisa ser reequilibrada.</li>
-                    </ol>
-                </div>
-                
-                <div class="action-card">
-                    <h4><i class="fas fa-bullseye"></i> Objetivo Geral</h4>
-                    <p style="margin-top: 10px;">Elevar o padrão de qualidade de forma consistente, aumentar radicalmente a coleta de feedback e otimizar a eficiência coletiva.</p>
-                    <div class="divider" style="margin: 15px 0;"></div>
-                    <p><strong>Potencial da Equipe:</strong> Talentos complementares com possibilidade de nivelamento por cima através do compartilhamento de conhecimento.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Action Plan -->
-        <section id="action-plan">
-            <h2 class="section-title">Plano de Ação Estratégico para a Equipe</h2>
-            
-            <div class="observations">
-                <h3>Ações Coletivas (Para Todos)</h3>
-                
-                <table class="action-table">
+            <div class="performance-table-container">
+                <table class="performance-table">
                     <thead>
                         <tr>
-                            <th>Ação</th>
-                            <th>Descrição</th>
-                            <th>Responsável</th>
-                            <th>Prazo</th>
+                            <th>Atendente</th>
+                            <th>Tickets Resolvidos</th>
+                            <th>Taxa de Resolução</th>
+                            <th>Média Avaliação</th>
+                            <th>% Avaliados</th>
+                            <th>Tempo Médio</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Campanha "Avalie Nosso Atendimento"</td>
-                            <td>Implementar solicitação verbal e por chat automático ao final de CADA ticket. Criar um ranking semanal saudável.</td>
-                            <td> Todos</td>
-                            <td>Diário</td>
+                            <td class="agent-name">Isaque Rossetto</td>
+                            <td>196</td>
+                            <td>94,39% <i class="fas fa-check status-success status-icon"></i></td>
+                            <td>4,88 <i class="fas fa-check status-success status-icon"></i></td>
+                            <td>4,08% <i class="fas fa-exclamation-triangle status-warning status-icon"></i></td>
+                            <td>49min26s <i class="fas fa-exclamation-triangle status-warning status-icon"></i></td>
                         </tr>
                         <tr>
-                            <td>Workshop de Padronização</td>
-                            <td>Isaque compartilha técnicas de alta satisfação (4.8). Emanuel compartilha dicas de agilidade (32min). Foco em equilibrar velocidade e qualidade.</td>
-                            <td>Isaque & Emanuel</td>
-                            <td>2 semanas</td>
+                            <td class="agent-name">Elaine Uchoa</td>
+                            <td>219</td>
+                            <td>90,41% <i class="fas fa-check status-success status-icon"></i></td>
+                            <td>3,85 <i class="fas fa-exclamation-triangle status-warning status-icon"></i></td>
+                            <td>5,94% <i class="fas fa-exclamation-triangle status-warning status-icon"></i></td>
+                            <td>56min45s <i class="fas fa-exclamation-triangle status-warning status-icon"></i></td>
                         </tr>
                         <tr>
-                            <td>Criação de "Guia Rápido" Colaborativo</td>
-                            <td>Documentar soluções para os 5 problemas mais comuns que geram tickets longos ou não resolvidos.</td>
-                            <td>Todos os Atendentes</td>
-                            <td>Contínuo / Semanal</td>
+                            <td class="agent-name">Lucas Rossetto</td>
+                            <td>248</td>
+                            <td>91,13% <i class="fas fa-exclamation-triangle status-warning status-icon"></i></td>
+                            <td>4,33 <i class="fas fa-exclamation-triangle status-warning status-icon"></i></td>
+                            <td>8,47% <i class="fas fa-exclamation-triangle status-warning status-icon"></i></td>
+                            <td>53min28s <i class="fas fa-exclamation-triangle status-warning status-icon"></i></td>
                         </tr>
                         <tr>
-                            <td>Revisão em Pares (Peer Review)</td>
-                            <td>Duplas revisam aleatoriamente 2 tickets fechados um do outro por semana, focando em qualidade da comunicação.</td>
-                            <td>Pares Rotativos</td>
-                            <td>Semanal</td>
+                            <td class="agent-name">Wuilianis Rodrigues</td>
+                            <td>83</td>
+                            <td>90,36% <i class="fas fa-check status-success status-icon"></i></td>
+                            <td>4,33 <i class="fas fa-exclamation-triangle status-warning status-icon"></i></td>
+                            <td>4,08% <i class="fas fa-exclamation-triangle status-warning status-icon"></i></td>
+                            <td>1h02min <i class="fas fa-exclamation-triangle status-warning status-icon"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="agent-name">Emanuel Skunieczny</td>
+                            <td>61</td>
+                            <td>86,89% <i class="fas fa-exclamation-triangle status-warning status-icon"></i></td>
+                            <td>5 <i class="fas fa-check status-success status-icon"></i></td>
+                            <td>4,92% <i class="fas fa-exclamation-triangle status-warning status-icon"></i></td>
+                            <td>29min10s <i class="fas fa-check status-success status-icon"></i></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
             
-            <div class="action-grid" style="margin-top: 30px;">
-                <div class="action-card">
-                    <h4><i class="fas fa-user-graduate"></i> Para Emanuel e Wuilianis</h4>
-                    <p><strong>Foco em Qualidade</strong></p>
-                    <ul style="padding-left: 20px; margin-top: 10px;">
-                        <li>Sessões de coaching individual focadas em comunicação</li>
-                        <li>Meta interina: Reduzir velocidade em 10% para aumentar resolução em 5% e satisfação em 0.5 pontos</li>
-                        <li>Técnicas de investigação do problema</li>
-                    </ul>
-                </div>
-                
-                <div class="action-card">
-                    <h4><i class="fas fa-tachometer-alt"></i> Para Elaine e Wuilianis</h4>
-                    <p><strong>Foco em Eficiência</strong></p>
-                    <ul style="padding-left: 20px; margin-top: 10px;">
-                        <li>Auditoria com líder para identificar e eliminar gargalos</li>
-                        <li>Uso obrigatório do Guia Rápido</li>
-                        <li>Feedback sobre uso das soluções padronizadas</li>
-                    </ul>
-                </div>
-                
-                <div class="action-card">
-                    <h4><i class="fas fa-chart-line"></i> Para Isaque e Lucas</h4>
-                    <p><strong>Foco em Liderança e Dados</strong></p>
-                    <ul style="padding-left: 20px; margin-top: 10px;">
-                        <li>Apoiar colegas nas novas práticas</li>
-                        <li>Meta: Primeiros a atingir 15% de taxa de avaliações</li>
-                        <li>Demonstrar viabilidade das metas</li>
-                    </ul>
-                </div>
+            <div class="observations">
+                <h3>Resumo Executivo da Tabela</h3>
+                <p><strong>Top Performers:</strong> Isaque Rossetto destaca-se em resolução (94,39%) e satisfação (4,88). Emanuel Skunieczny é referência em eficiência (29min10s) e satisfação (5).</p>
+                <p><strong>Desafios Comuns:</strong> Coleta de avaliações é crítica para todos (média 5,50%). Eficiência operacional é desafio para 4 de 5 agentes.</p>
+                <p><strong>Oportunidade de Nivelamento:</strong> Grande variação entre membros indica potencial para transferência de melhores práticas.</p>
             </div>
         </section>
 
-        <!-- Goals -->
-        <section id="goals">
-            <h2 class="section-title">Metas de Curto Prazo para a Equipe</h2>
-            <h3 style="text-align: center; margin-bottom: 30px; color: var(--secondary);">Próximos 30 Dias</h3>
+        <!-- Análise por Indicador -->
+        <section id="indicators">
+            <h2 class="section-title">Análise por Indicador - Visão Geral da Equipe</h2>
             
-            <div class="metrics-grid">
-                <div class="metric-card">
-                    <div class="metric-title">Taxa de Avaliações</div>
-                    <div class="metric-value">12%</div>
-                    <div class="metric-target">Aumentar da média atual de 5.1% para 12%</div>
+            <div class="values-container">
+                <div class="value-card">
+                    <h3 class="value-title">Taxa de Resolução</h3>
+                    <p><strong>Meta da Equipe:</strong> 92%</p>
+                    <p><strong>Média da Equipe:</strong> 90,64% <i class="fas fa-exclamation-triangle status-warning"></i></p>
+                    <div class="highlight">
+                        <strong>Destaques:</strong> Isaque Rossetto (94,39%) se destaca com performance excepcional.
+                    </div>
+                    <div class="highlight danger">
+                        <strong>Atenção:</strong> Emanuel (86,89%) requer intervenção imediata.
+                    </div>
+                    <p><strong>Observações:</strong> A equipe apresenta desempenho misto neste indicador. Três dos cinco atendentes atingem ou superam a meta mínima de 90%, mas apenas um atinge a meta oficial de 92%. A melhoria na resolução no primeiro contato é uma oportunidade coletiva.</p>
                 </div>
                 
-                <div class="metric-card">
-                    <div class="metric-title">Satisfação Mínima</div>
-                    <div class="metric-value">3.5+</div>
-                    <div class="metric-target">Ninguém abaixo de 3.5</div>
+                <div class="value-card">
+                    <h3 class="value-title">Satisfação do Cliente</h3>
+                    <p><strong>Meta da Equipe:</strong> Acima de 4,5</p>
+                    <p><strong>Média da Equipe:</strong> 4,48 <i class="fas fa-exclamation-triangle status-warning"></i></p>
+                    <div class="highlight success">
+                        <strong>Excelência:</strong> Emanuel (5) e Isaque Rossetto (4,88) apresentam desempenho excepcional.
+                    </div>
+                    <div class="highlight danger">
+                        <strong>Prioridade:</strong> Elaine Uchoa (3,85) necessita de intervenção prioritária.
+                    </div>
+                    <p><strong>Observações:</strong> A equipe está no limiar da meta, com desempenho polarizado. É crucial considerar que todas as médias são baseadas em amostras estatisticamente insuficientes (média de 5,50% de avaliações), comprometendo a confiabilidade deste indicador.</p>
                 </div>
                 
-                <div class="metric-card">
-                    <div class="metric-title">Tempo Médio</div>
-                    <div class="metric-value">35-45min</div>
-                    <div class="metric-target">Tempo médio abaixo dos 45min</div>
+                <div class="value-card">
+                    <h3 class="value-title">% de Atendimentos Avaliados</h3>
+                    <p><strong>Meta da Equipe:</strong> 30%</p>
+                    <p><strong>Média da Equipe:</strong> 5,50% <i class="fas fa-exclamation-triangle status-danger"></i></p>
+                    <div class="highlight warning">
+                        <strong>Melhor Desempenho:</strong> Lucas Rossetto (8,47%) tem o melhor índice, ainda insuficiente.
+                    </div>
+                    <div class="highlight danger">
+                        <strong>Crítico:</strong> Todos estão dramaticamente abaixo da meta.
+                    </div>
+                    <p><strong>Observações:</strong> Este é o ponto crítico universal da equipe. A falta de feedback representativo é o maior obstáculo para uma gestão precisa da qualidade do atendimento e para direcionar melhorias baseadas em dados.</p>
                 </div>
                 
-                <div class="metric-card">
-                    <div class="metric-title">Excelência em Resolução</div>
-                    <div class="metric-value">90%+</div>
-                    <div class="metric-target">Todos com taxa de resolução acima de 90%</div>
+                <div class="value-card">
+                    <h3 class="value-title">Tempo Médio de Atendimento</h3>
+                    <p><strong>Meta da Equipe:</strong> 37 min</p>
+                    <p><strong>Média da Equipe:</strong> 50min18s <i class="fas fa-exclamation-triangle status-warning"></i></p>
+                    <div class="highlight success">
+                        <strong>Referência:</strong> Emanuel (29min10s) supera a meta, demonstrando excelência em produtividade.
+                    </div>
+                    <div class="highlight danger">
+                        <strong>Maior Desafio:</strong> Wuilianis Rodrigues (1h02min) requer otimização urgente.
+                    </div>
+                    <p><strong>Observações:</strong> A equipe está 36% acima da meta em eficiência operacional. Quatro dos cinco atendentes estão significativamente acima do tempo ideal. A redução do tempo médio é uma necessidade coletiva, com impacto direto na capacidade de atendimento.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Conclusion -->
-        <section id="conclusion">
+        <!-- Áreas de Melhoria Coletivas -->
+        <section id="collective-improvements">
+            <h2 class="section-title">Áreas de Melhoria Coletivas e Ações Recomendadas</h2>
+            
+            <div class="action-grid">
+                <div class="action-card">
+                    <h4><i class="fas fa-exclamation-triangle"></i> Áreas Críticas Identificadas</h4>
+                    <ol style="padding-left: 20px; margin-top: 10px;">
+                        <li><strong>Coleta de Feedback Insuficiente (Média: 5,50%)</strong> – Prioridade máxima. A incapacidade de medir a satisfação do cliente de forma confiável é um risco operacional e estratégico.</li>
+                        <li><strong>Ineficiência Operacional Generalizada (Média: 50min18seg)</strong> – Quatro dos cinco atendentes estão significativamente acima da meta de tempo, impactando a produtividade e capacidade de resposta da equipe.</li>
+                        <li><strong>Consistência na Resolução (Média: 90,64%)</strong> – Apenas um atendente atinge a meta de 92%, indicando necessidade de padronização e melhoria de processos de resolução.</li>
+                    </ol>
+                </div>
+                
+                <div class="action-card">
+                    <h4><i class="fas fa-clipboard-list"></i> Ações Recomendadas para a Equipe</h4>
+                    <ul style="padding-left: 20px; margin-top: 10px;">
+                        <li><strong>Campanha Unificada de Coleta de Avaliações:</strong>
+                            <ul style="padding-left: 15px; margin-top: 5px;">
+                                <li>Implementar processo obrigatório de solicitação de avaliação ao final de cada atendimento</li>
+                                <li>Estabelecer meta coletiva progressiva: 15% em 15 dias, 25% em 30 dias</li>
+                                <li>Criar competição saudável com ranking semanal</li>
+                            </ul>
+                        </li>
+                        <li><strong>Programa de Otimização de Tempo de Atendimento:</strong>
+                            <ul style="padding-left: 15px; margin-top: 5px;">
+                                <li>Workshop colaborativo para análise de tickets longos e identificação de gargalos</li>
+                                <li>Desenvolver biblioteca compartilhada de scripts e templates</li>
+                                <li>Sistema de mentoria onde Emanuel compartilhe técnicas com colegas</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="action-card">
+                    <h4><i class="fas fa-cogs"></i> Padronização de Processos</h4>
+                    <ul style="padding-left: 20px; margin-top: 10px;">
+                        <li><strong>Guias de Resolução Unificados:</strong> Criar para as 10 categorias de tickets mais comuns</li>
+                        <li><strong>Sessões de Análise Quinzenal:</strong> Revisão coletiva de tickets não resolvidos</li>
+                        <li><strong>Sistema de Apoio Entre Pares:</strong> Para consulta rápida em casos complexos</li>
+                        <li><strong>Transferência de Melhores Práticas:</strong> Isaque (efetividade) e Emanuel (eficiência) como mentores</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feedback Geral -->
+        <section id="team-feedback">
+            <h2 class="section-title">Feedback Geral da Equipe</h2>
+            
+            <div class="summary-grid">
+                <div class="summary-card">
+                    <h4><i class="fas fa-thumbs-up"></i> Pontos Fortes Coletivos</h4>
+                    <ul style="padding-left: 20px; margin-top: 10px; flex-grow: 1;">
+                        <li><strong>Compromisso com a Resolução:</strong> Três dos cinco atendentes atingem ou superam 90% de taxa de resolução, demonstrando foco técnico.</li>
+                        <li><strong>Potencial de Excelência em Satisfação:</strong> Dois atendentes (Emanuel e Isaque Rossetto) mostram que é possível alcançar avaliações próximas da perfeição.</li>
+                        <li><strong>Volume de Trabalho Gerenciado:</strong> A equipe como um todo resolveu 737 tickets, demonstrando capacidade operacional.</li>
+                        <li><strong>Diversidade de Fortalezas:</strong> Isaque (efetividade), Emanuel (eficiência), Lucas (volume) - base para aprendizado cruzado.</li>
+                    </ul>
+                </div>
+                
+                <div class="summary-card">
+                    <h4><i class="fas fa-exclamation-circle"></i> Áreas de Oportunidade Coletivas</h4>
+                    <ul style="padding-left: 20px; margin-top: 10px; flex-grow: 1;">
+                        <li><strong>Gestão de Feedback:</strong> A incapacidade de coletar avaliações (média 5,50%) é o ponto fraco mais consistente e impactante.</li>
+                        <li><strong>Eficiência Operacional:</strong> A maioria da equipe gasta significativamente mais tempo que o ideal por ticket (média 50min18s).</li>
+                        <li><strong>Desigualdade de Desempenho:</strong> Grande variação entre membros indica oportunidade de nivelamento por cima através do compartilhamento de melhores práticas.</li>
+                        <li><strong>Confiabilidade dos Dados:</strong> Amostras pequenas comprometem análise de satisfação e direcionamento de melhorias.</li>
+                    </ul>
+                </div>
+                
+                <div class="summary-card">
+                    <h4><i class="fas fa-chart-line"></i> Oportunidades de Sinergia</h4>
+                    <ul style="padding-left: 20px; margin-top: 10px; flex-grow: 1;">
+                        <li><strong>Mentoria Cruzada:</strong> Emanuel (eficiência) pode treinar equipe em gestão de tempo</li>
+                        <li><strong>Compartilhamento de Técnicas:</strong> Isaque (alta resolução) pode compartilhar abordagens de diagnóstico</li>
+                        <li><strong>Padronização de Processos:</strong> Desenvolver metodologias comuns baseadas nas melhores práticas</li>
+                        <li><strong>Competição Saudável:</strong> Rankings e reconhecimento para métricas específicas</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Planos de Ação -->
+        <section id="action-plans">
+            <h2 class="section-title">Planos de Ação Coletivos</h2>
+            
+            <div class="observations" style="margin-bottom: 30px;">
+                <h3>Objetivos para as Próximas Semanas</h3>
+                <div class="metrics-grid" style="margin-top: 20px;">
+                    <div class="metric-card">
+                        <div class="metric-title">Avaliações Coletadas</div>
+                        <div class="metric-value">12%+</div>
+                        <div class="metric-target">Aumentar taxa média para 12%</div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-title">Tempo Médio</div>
+                        <div class="metric-value">&lt; 47min</div>
+                        <div class="metric-target">Reduzir para menos de 47 minutos</div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-title">Taxa de Resolução</div>
+                        <div class="metric-value">91,5%+</div>
+                        <div class="metric-target">Elevar média para 91,5%</div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-title">Programa Mentoria</div>
+                        <div class="metric-value">100%</div>
+                        <div class="metric-target">Implementar em todos os atendentes</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="observations" style="margin-bottom: 30px;">
+                <h3>Metas do Próximo Mês</h3>
+                <div class="metrics-grid" style="margin-top: 20px;">
+                    <div class="metric-card">
+                        <div class="metric-title">Avaliações Coletadas</div>
+                        <div class="metric-value">20%</div>
+                        <div class="metric-target">Alcançar 20% em média</div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-title">Tempo Médio</div>
+                        <div class="metric-value">&lt; 42min</div>
+                        <div class="metric-target">Reduzir para 42 minutos</div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-title">Meta de Resolução</div>
+                        <div class="metric-value">3 Agentes</div>
+                        <div class="metric-target">92% em pelo menos 3 atendentes</div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-title">Melhores Práticas</div>
+                        <div class="metric-value">5 Documentadas</div>
+                        <div class="metric-target">Padronizar 5 melhores práticas</div>
+                    </div>
+                </div>
+            </div>
+            
             <div class="observations" style="background-color: #f0f9ff;">
-                <h3>Conclusão</h3>
-                <p>A equipe possui potencial claro, com talentos complementares: <strong>Isaque (qualidade máxima), Emanuel (velocidade máxima) e Lucas (equilíbrio)</strong>. O desafio é nivelar por cima, transferindo o conhecimento dos destaques para os demais e resolver o gargalo crítico da falta de dados (avaliações).</p>
-                <p style="margin-top: 15px;">O sucesso depende da <strong>colaboração ativa</strong> (compartilhando melhores práticas) e da adoção disciplinada das novas ações coletivas, especialmente na solicitação de feedback. Focando nisso, a equipe pode evoluir de um conjunto de desempenhos individuais desiguais para uma unidade coesa, eficiente e consistentemente de alta qualidade.</p>
+                <h3>Resumo Executivo Final</h3>
+                <p>A equipe de atendimento apresenta um cenário de contrastes, com excelência pontual mas desafios sistêmicos. Isaque Rossetto destaca-se como referência em efetividade (94,39%) e satisfação (4,88), enquanto Emanuel Skunieczny é modelo em eficiência (29min10seg).</p>
+                
+                <div class="divider"></div>
+                
+                <p><strong>FALHA CRÍTICA NA MEDIÇÃO:</strong> A coleta insignificante de feedback (média de 5,50%) é a maior vulnerabilidade da equipe, tornando todas as métricas de satisfação pouco confiáveis e impedindo a melhoria baseada em dados.</p>
+                
+                <p><strong>INEFICIÊNCIA OPERACIONAL GENERALIZADA:</strong> Quatro dos cinco atendentes estão significativamente acima do tempo meta de atendimento, limitando a capacidade de resposta e aumentando custos operacionais.</p>
+                
+                <p><strong>DESNIVELAMENTO DE PERFORMANCE:</strong> A grande variação entre os membros indica oportunidade não aproveitada de compartilhamento de melhores práticas e técnicas.</p>
+                
+                <div class="divider"></div>
+                
+                <p style="font-weight: bold; color: var(--primary);">Recomendação Estratégica: Implementar imediatamente um programa triplo focado em:</p>
+                <ol style="padding-left: 20px; margin-top: 10px;">
+                    <li><strong>Mecanismos obrigatórios de coleta de feedback</strong> com metas progressivas e monitoramento contínuo.</li>
+                    <li><strong>Otimização coletiva de processos</strong> para ganho de eficiência, com workshops e biblioteca compartilhada.</li>
+                    <li><strong>Sistema de mentoria interna</strong> para transferência das melhores práticas dos top performers para toda a equipe.</li>
+                </ol>
+                
+                <p style="margin-top: 15px;">A base técnica existe, mas precisa ser complementada com melhor gestão, medição e colaboração. O potencial para excelência coletiva é evidente, mas requer intervenção estruturada e monitoramento rigoroso.</p>
             </div>
         </section>
     </div>
@@ -911,6 +897,37 @@
             `;
             document.head.appendChild(style);
             
+            // Adicionar funcionalidade de impressão
+            const printButton = document.createElement('button');
+            printButton.innerHTML = '<i class="fas fa-print"></i> Imprimir Relatório';
+            printButton.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background: var(--primary);
+                color: white;
+                border: none;
+                padding: 12px 20px;
+                border-radius: 50px;
+                cursor: pointer;
+                box-shadow: var(--shadow);
+                z-index: 99;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                font-weight: 600;
+            `;
+            printButton.addEventListener('click', function() {
+                window.print();
+            });
+            document.body.appendChild(printButton);
+            
+            // Adicionar data atual no rodapé
+            const today = new Date();
+            const options = { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' };
+            const dateString = today.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' });
+            const timeString = today.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+            document.getElementById('current-date').textContent = `${dateString} às ${timeString}`;
         });
     </script>
 </body>

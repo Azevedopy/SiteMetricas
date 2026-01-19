@@ -260,9 +260,7 @@
             margin-bottom: 15px;
         }
         
-        /* Action Plans
-        
-        */
+        /* Action Plans */
         .action-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -405,14 +403,22 @@
             margin: 25px 0;
         }
         
-        .performance-highlight {
-            background-color: #f0fff4;
-            border-left: 5px solid var(--success);
+        .improvement-icon {
+            display: inline-block;
+            margin-left: 5px;
+            font-size: 18px;
         }
         
-        .performance-caution {
-            background-color: #fff7ed;
-            border-left: 5px solid var(--warning);
+        .danger-icon {
+            color: var(--danger);
+        }
+        
+        .warning-icon {
+            color: var(--warning);
+        }
+        
+        .success-icon {
+            color: var(--success);
         }
     </style>
 </head>
@@ -532,7 +538,7 @@
                 <div class="employee-info">
                     <div>
                         <h3 class="employee-name">Isaque Rossetto</h3>
-                        <p class="period">Período: 04/01/2026 à 10/01/2026</p>
+                        <p class="period">Período: 11/01/2026 à 17/01/2026</p>
                     </div>
                     <div>
                         <div class="logo">
@@ -564,38 +570,61 @@
                         <div class="metric-value">Meta 30min</div>
                     </div>
                 </div>
+
+                <h3 class="section-title" style="text-align: left; margin-bottom: 20px; font-size: 22px;">Semana Anterior</h3>
+                 <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-title">Taxa de Resolução</div>
+                        <div class="metric-value">94.29%</div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-title">Satisfação do Cliente</div>
+                        <div class="metric-value">4.8</div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-title">Atendimentos Avaliados</div>
+                        <div class="metric-value">7.14%</div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-title">Tempo Médio Atend.</div>
+                        <div class="metric-value">52min 45s</div>
+                    </div>
+                </div>
                 
                 <h3 class="section-title" style="text-align: left; margin-bottom: 20px; font-size: 22px;">Desempenho Realizado</h3>
                 <div class="metrics-grid">
                     <div class="metric-card success">
                         <div class="metric-title">Taxa de Resolução</div>
-                        <div class="metric-value">94.29%</div>
+                        <div class="metric-value">94.39% <i class="fas fa-check success-icon improvement-icon"></i></div>
                         <div class="metric-target">
-                            Meta: <span class="target">92%</span> | Diferença: +4.29%
+                            Meta: <span class="target">92%</span> | Diferença: +2.39%
                         </div>
                     </div>
                     
                     <div class="metric-card success">
                         <div class="metric-title">Satisfação do Cliente</div>
-                        <div class="metric-value">4.8</div>
+                        <div class="metric-value">4.88 <i class="fas fa-check success-icon improvement-icon"></i></div>
                         <div class="metric-target">
-                            Meta: <span class="target">Acima de 4.5</span> | Diferença: +0.3
+                            Meta: <span class="target">Acima de 4,5</span> | Diferença: +0.38
                         </div>
                     </div>
                     
                     <div class="metric-card danger">
                         <div class="metric-title">Atendimentos Avaliados</div>
-                        <div class="metric-value">7.14%</div>
+                        <div class="metric-value">4.08% <i class="fas fa-exclamation-triangle danger-icon improvement-icon"></i></div>
                         <div class="metric-target">
-                            Meta: <span class="target">30%</span> | Diferença: -22.86%
+                            Meta: <span class="target">30%</span> | Diferença: -25.92%
                         </div>
                     </div>
                     
-                    <div class="metric-card warning">
+                    <div class="metric-card danger">
                         <div class="metric-title">Tempo Médio de Atendimento</div>
-                        <div class="metric-value">52min 45s</div>
+                        <div class="metric-value">49min 26s <i class="fas fa-exclamation-triangle danger-icon improvement-icon"></i></div>
                         <div class="metric-target">
-                            Meta: <span class="target">30 min</span> | Diferença: +15min 45s
+                            Meta: <span class="target">30min</span> | Diferença: +19min 26s
                         </div>
                     </div>
                 </div>
@@ -604,30 +633,30 @@
                     <h3>Visão Geral das Métricas</h3>
                     <div class="metric-info">
                         <span class="metric-label">Tickets Abertos:</span>
-                        <span class="metric-number">210</span>
+                        <span class="metric-number">196</span>
                     </div>
                     <div class="metric-info">
                         <span class="metric-label">Tickets Resolvidos:</span>
-                        <span class="metric-number">198</span>
+                        <span class="metric-number">185</span>
                     </div>
                     <div class="metric-info">
                         <span class="metric-label">Taxa de Resolução:</span>
-                        <span class="metric-number">94.29%</span>
+                        <span class="metric-number">94.39%</span>
                     </div>
                     <div class="metric-info">
                         <span class="metric-label">Média de Avaliação:</span>
-                        <span class="metric-number">4.8</span>
+                        <span class="metric-number">4.88</span>
                     </div>
                     <div class="metric-info">
                         <span class="metric-label">% de Atendimentos Avaliados:</span>
-                        <span class="metric-number">7.14%</span>
+                        <span class="metric-number">4.08%</span>
                     </div>
                     <div class="metric-info">
                         <span class="metric-label">Tempo Médio de Atendimento:</span>
-                        <span class="metric-number">52min 45seg</span>
+                        <span class="metric-number">49min 26s</span>
                     </div>
                     <div class="divider"></div>
-                    <p><strong>Análise:</strong> Isaque apresenta um desempenho sólido e de alta qualidade, com destaque para a excepcional taxa de resolução (94.29%) e elevada satisfação do cliente (4.8). O principal desafio está em aumentar a representatividade dos dados através da coleta de mais avaliações.</p>
+                    <p><strong>Análise:</strong> Isaque Rossetto apresentou desempenho excepcional em qualidade, com taxa de resolução significativamente acima da meta (94.39%) e satisfação do cliente notável (4.88). No entanto, o baixo percentual de avaliações coletadas (4.08%) limita a representatividade destes excelentes resultados, e o tempo médio de atendimento está consideravelmente acima da meta, indicando oportunidades para ganhos de eficiência.</p>
                 </div>
             </div>
         </section>
@@ -637,57 +666,56 @@
             <h2 class="section-title">Análise por Indicador</h2>
             
             <div class="values-container">
-                <div class="value-card performance-highlight">
+                <div class="value-card">
                     <h3 class="value-title">Taxa de Resolução</h3>
-                    <p><strong>Meta:</strong> 90%</p>
-                    <p><strong>Desempenho Atual:</strong> 94.29%</p>
-                    <p><strong>Observações:</strong> Excelente desempenho. A taxa está significativamente acima da meta, demonstrando alta eficácia no fechamento de tickets no primeiro contato. Para aprimorar ainda mais, pode-se analisar os 12 tickets não resolvidos para identificar se há padrões pontuais que possam ser eliminados.</p>
+                    <p><strong>Meta:</strong> 92%</p>
+                    <p><strong>Desempenho Atual:</strong> 94.39% ✅</p>
+                    <p><strong>Observações:</strong> Excelente desempenho. A taxa está 2,39% acima da meta, demonstrando alta eficácia no fechamento de tickets. Com apenas 11 tickets não resolvidos em 196, o resultado reflete grande competência na resolução no primeiro contato. A análise desses 11 casos pode revelar oportunidades para aprimoramento ainda maior.</p>
                 </div>
                 
-                <div class="value-card performance-highlight">
-                    <h3 class="value-title">Satisfação do Cliente</h3>
+                <div class="value-card">
+                    <h3 class="value-title">Satisfação do Cliente (Média de Avaliação)</h3>
                     <p><strong>Meta:</strong> Acima de 4.5</p>
-                    <p><strong>Desempenho Atual:</strong> 4.8</p>
-                    <p><strong>Observações:</strong> A média de avaliação é excepcional e supera a meta, indicando que a qualidade do atendimento prestado gera alta satisfação. O foco deve ser aumentar a base de avaliações para tornar este dado ainda mais representativo e confiável.</p>
+                    <p><strong>Desempenho Atual:</strong> 4.88 ✅</p>
+                    <p><strong>Observações:</strong> Desempenho excepcional. A média supera significativamente a meta, indicando que a qualidade do atendimento gera alta satisfação nos clientes. O foco agora deve ser aumentar a base de avaliações para tornar este excelente dado ainda mais robusto e representativo.</p>
                 </div>
                 
                 <div class="value-card">
                     <h3 class="value-title">% de Atendimentos Avaliados</h3>
                     <p><strong>Meta:</strong> 30%</p>
-                    <p><strong>Desempenho Atual:</strong> 7.14%</p>
-                    <p><strong>Observações:</strong> Este continua sendo um ponto crítico. Apesar de ser o dobro do desempenho anterior analisado, a taxa está muito abaixo da meta. Com apenas 15 avaliações em 210 atendimentos, há uma grande oportunidade de capturar mais feedback. Estratégias ativas para solicitação são essenciais.</p>
+                    <p><strong>Desempenho Atual:</strong> 4.08% ⚠️</p>
+                    <p><strong>Observações:</strong> Este é o principal ponto de atenção. A taxa está criticamente abaixo da meta, com apenas cerca de 8 avaliações em 196 atendimentos. A excelência no serviço não está sendo adequadamente mensurada, limitando a confiabilidade da métrica de satisfação e a visibilidade do bom trabalho realizado.</p>
                 </div>
                 
-                <div class="value-card performance-caution">
+                <div class="value-card">
                     <h3 class="value-title">Tempo Médio de Atendimento</h3>
-                    <p><strong>Meta:</strong> 37 min</p>
-                    <p><strong>Desempenho Atual:</strong> 52min 45seg</p>
-                    <p><strong>Observações:</strong> O tempo médio está acima da meta, embora em um patamar mais controlado em comparação a outros desempenhos. A diferença de cerca de 16 minutos indica uma oportunidade para ganhos de eficiência, analisando se há etapas no processo ou tipos específicos de demanda que podem ser otimizados.</p>
+                    <p><strong>Meta:</strong> 30 min</p>
+                    <p><strong>Desempenho Atual:</strong> 49min 26seg ⚠️</p>
+                    <p><strong>Observações:</strong> O tempo médio está 65% acima da meta, representando uma lacuna significativa de eficiência. Apesar da alta qualidade e resolução, o tempo despendido por ticket precisa ser otimizado para alinhar produtividade à excelência técnica já demonstrada.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Action Plans
-         
-        -->
+        <!-- Action Plans -->
         <section id="actions">
             <h2 class="section-title">Áreas de Melhoria e Ações Recomendadas</h2>
             
             <div class="action-grid">
                 <div class="action-card">
                     <h4><i class="fas fa-thumbs-up"></i> Pontos Positivos</h4>
-                    <ol style="padding-left: 20px; margin-top: 10px;">
-                        <li><strong>Taxa de Resolução Exemplar (94.29%):</strong> Supera a meta com folga, demonstrando grande competência técnica e foco na solução.</li>
-                        <li><strong>Alta Satisfação do Cliente (4.8):</strong> A nota quase perfeita reflete a qualidade do atendimento e a positiva experiência gerada para o cliente.</li>
-                    </ol>
+                    <ul style="padding-left: 20px; margin-top: 10px;">
+                        <li><strong>Taxa de Resolução Exemplar (94,39%):</strong> Supera a meta com grande margem, demonstrando excelência técnica e foco na solução definitiva.</li>
+                        <li><strong>Satisfação do Cliente Excepcional (4,88):</strong> A nota quase perfeita é um forte indicador da qualidade da experiência entregue ao cliente.</li>
+                        <li><strong>Alto volume de tickets resolvidos (185)</strong> mantendo padrão de qualidade elevado.</li>
+                    </ul>
                 </div>
                 
                 <div class="action-card">
                     <h4><i class="fas fa-exclamation-triangle"></i> Áreas de Melhoria</h4>
                     <ol style="padding-left: 20px; margin-top: 10px;">
-                        <li><strong>% de Atendimentos Avaliados (7.14%):</strong> A baixa coleta de feedback é o principal ponto de melhoria, limitando a representatividade dos excelentes índices de satisfação.</li>
-                        <li><strong>Tempo Médio de Atendimento (52min 45seg):</strong> Ainda acima da meta, indicando uma oportunidade para refinamento da eficiência operacional.</li>
-                        <li><strong>Consolidação da Excelência:</strong> O desafio é manter as altas taxas de resolução e satisfação enquanto se melhora os indicadores de eficiência e coleta de dados.</li>
+                        <li><strong>% de Atendimentos Avaliados (4,08%)</strong> – A coleta de feedback é extremamente baixa, tornando os excelentes índices de satisfação pouco representativos.</li>
+                        <li><strong>Tempo Médio de Atendimento (49min 26seg)</strong> – A distância em relação à meta de eficiência (30min) é considerável e impacta o volume potencial de atendimentos.</li>
+                        <li><strong>Consolidação da Excelência</strong> – O desafio é manter as altas taxas de resolução e satisfação enquanto se melhora radicalmente a coleta de dados e a eficiência operacional.</li>
                     </ol>
                 </div>
                 
@@ -696,20 +724,20 @@
                     <ul style="padding-left: 20px; margin-top: 10px;">
                         <li><strong>Estratégias para Aumentar a Base de Avaliações:</strong>
                             <ul style="padding-left: 15px; margin-top: 5px;">
-                                <li>Implementar uma solicitação padronizada e amigável ao final do atendimento</li>
-                                <li>Testar o envio de um lembrete automatizado (ex.: por SMS ou e-mail) algumas horas após a resolução do ticket</li>
+                                <li>Implementar uma solicitação obrigatória, porém educada, de avaliação ao final de cada atendimento, como etapa final do fechamento do ticket.</li>
+                                <li>Testar um lembrete automático via e-mail ou WhatsApp 1 hora após a resolução, com um link simplificado para avaliação.</li>
                             </ul>
                         </li>
                         <li><strong>Otimização do Tempo de Atendimento:</strong>
                             <ul style="padding-left: 15px; margin-top: 5px;">
-                                <li>Fazer uma análise focada nos tickets que levaram mais de 1 hora para serem resolvidos</li>
-                                <li>Criar ou atualizar "guias rápidos" para as soluções dos problemas mais comuns identificados nessa análise</li>
+                                <li>Realizar uma análise detalhada dos 20% dos tickets mais longos (>1h) para identificar causas comuns de demora.</li>
+                                <li>Desenvolver scripts ou templates de resposta para as consultas mais frequentes, agilizando a etapa de composição da solução.</li>
                             </ul>
                         </li>
-                        <li><strong>Manutenção e Análise da Alta Performance:</strong>
+                        <li><strong>Manutenção e Documentação da Alta Performance:</strong>
                             <ul style="padding-left: 15px; margin-top: 5px;">
-                                <li>Revisar os poucos tickets não resolvidos para garantir que não há causas sistêmicas</li>
-                                <li>Documentar boas práticas que geram a alta avaliação (4.8) para possível compartilhamento com a equipe</li>
+                                <li>Revisar os 11 tickets não resolvidos para assegurar que são casos excepcionais e não falhas processuais.</li>
+                                <li>Documentar as técnicas ou abordagens que geram a satisfação de 4,88, para possível replicação como melhor prática na equipe.</li>
                             </ul>
                         </li>
                     </ul>
@@ -721,34 +749,34 @@
                 <div class="metrics-grid" style="margin-top: 20px;">
                     <div class="metric-card">
                         <div class="metric-title">% de Avaliações</div>
-                        <div class="metric-value">15%</div>
-                        <div class="metric-target">Aumentar para pelo menos 15% no próximo mês</div>
+                        <div class="metric-value">10%+</div>
+                        <div class="metric-target">Aumentar para pelo menos 10%</div>
                     </div>
                     
                     <div class="metric-card">
                         <div class="metric-title">Tempo de Atendimento</div>
-                        <div class="metric-value">&lt; 50min</div>
-                        <div class="metric-target">Reduzir para abaixo de 50 minutos</div>
+                        <div class="metric-value">&lt; 47min</div>
+                        <div class="metric-target">Reduzir para abaixo de 47 minutos</div>
                     </div>
                     
-                    <div class="metric-card success">
+                    <div class="metric-card">
                         <div class="metric-title">Taxa de Resolução</div>
-                        <div class="metric-value">93%+</div>
+                        <div class="metric-value">&gt; 93%</div>
                         <div class="metric-target">Manter acima de 93%</div>
                     </div>
                     
-                    <div class="metric-card success">
+                    <div class="metric-card">
                         <div class="metric-title">Satisfação</div>
-                        <div class="metric-value">4.7+</div>
+                        <div class="metric-value">&gt; 4.7</div>
                         <div class="metric-target">Manter acima de 4.7</div>
                     </div>
                 </div>
-                <p style="margin-top: 15px; font-style: italic;">Meta adicional: Documentar uma boa prática de atendimento que contribua para a alta satisfação do cliente.</p>
             </div>
             
             <div class="observations" style="margin-top: 30px; background-color: #f0f9ff;">
                 <h3>Resumo</h3>
-                <p>Isaque Rossetto apresenta um desempenho sólido e de alta qualidade, com destaque para a excepcional taxa de resolução (94.29%) e a elevada satisfação do cliente (4.8). O principal desafio está em aumentar a representatividade desses dados, através da coleta de mais avaliações, e em aperfeiçoar a eficiência para reduzir o tempo médio de atendimento. Focando nessas ações, ele tem potencial para alcançar um desempenho ainda mais equilibrado e exemplar em todos os indicadores.</p>
+                <p>Isaque Rossetto demonstra um desempenho de alta qualidade, com destaque absoluto na resolução (94,39%) e na satisfação do cliente (4,88). Estes são indicadores notáveis de competência técnica e habilidade no relacionamento. No entanto, a eficácia precisa ser complementada com maior eficiência.</p>
+                <p style="margin-top: 10px;">O tempo de atendimento elevado (49min26seg) e, principalmente, a mínima coleta de feedback (4,08%) são gargalos que impedem um desempenho completo e plenamente mensurável. A prioridade imediata deve ser a implementação agressiva de mecanismos para capturar avaliações, transformando a percepção qualitativa em dados robustos. Paralelamente, ações para otimizar processos e ganhar agilidade permitirão que a excelência no atendimento seja entregue de forma mais produtiva. O potencial para um desempenho exemplar em todos os fronts é evidente.</p>
             </div>
         </section>
     </div>
@@ -818,7 +846,13 @@
             const today = new Date();
             const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
             const dateString = today.toLocaleDateString('pt-BR', options);
-            document.getElementById('current-date').textContent = dateString;
+            const copyrightDiv = document.createElement('div');
+            copyrightDiv.className = 'copyright';
+            copyrightDiv.innerHTML = `
+                <p>© 2026 Bitz Softwares. Todos os direitos reservados.</p>
+                <p>Relatório gerado em: ${dateString}</p>
+            `;
+            document.querySelector('footer').appendChild(copyrightDiv);
         });
     </script>
 </body>

@@ -403,43 +403,33 @@
             margin: 25px 0;
         }
         
-        .performance-highlight {
-            background-color: #f0fff4;
-            border-left: 5px solid var(--success);
-        }
-        
-        .performance-caution {
-            background-color: #fff7ed;
-            border-left: 5px solid var(--warning);
-        }
-        
-        .performance-critical {
-            background-color: #fee2e2;
-            border-left: 5px solid var(--danger);
-        }
-        
-        .priority-badge {
+        .improvement-icon {
             display: inline-block;
-            background-color: var(--danger);
-            color: white;
-            padding: 3px 10px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-left: 10px;
-            vertical-align: middle;
+            margin-left: 5px;
+            font-size: 18px;
         }
         
-        .strength-badge {
-            display: inline-block;
-            background-color: var(--success);
-            color: white;
-            padding: 3px 10px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-left: 10px;
-            vertical-align: middle;
+        .danger-icon {
+            color: var(--danger);
+        }
+        
+        .warning-icon {
+            color: var(--warning);
+        }
+        
+        .success-icon {
+            color: var(--success);
+        }
+        
+        .critical-icon {
+            color: var(--danger);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
         }
     </style>
 </head>
@@ -559,7 +549,7 @@
                 <div class="employee-info">
                     <div>
                         <h3 class="employee-name">Emanuel Skunieczny</h3>
-                        <p class="period">Período: 04/01/2026 à 10/01/2026</p>
+                        <p class="period">Período: 11/01/2026 à 17/01/2026</p>
                     </div>
                     <div>
                         <div class="logo">
@@ -570,7 +560,7 @@
                 </div>
                 
                 <h3 class="section-title" style="text-align: left; margin-bottom: 20px; font-size: 22px;">Metas da Semana</h3>
-                <div class="metrics-grid">
+                 <div class="metrics-grid">
                     <div class="metric-card">
                         <div class="metric-title">Taxa de Resolução</div>
                         <div class="metric-value">Meta 92%</div>
@@ -592,19 +582,19 @@
                     </div>
                 </div>
                 
-                <h3 class="section-title" style="text-align: left; margin-bottom: 20px; font-size: 22px;">Desempenho Realizado <span class="priority-badge">DESEQUILÍBRIO CRÍTICO</span></h3>
+                <h3 class="section-title" style="text-align: left; margin-bottom: 20px; font-size: 22px;">Desempenho Realizado</h3>
                 <div class="metrics-grid">
                     <div class="metric-card danger">
                         <div class="metric-title">Taxa de Resolução</div>
-                        <div class="metric-value">83,16%</div>
+                        <div class="metric-value">83.16% <i class="fas fa-exclamation-triangle critical-icon improvement-icon"></i></div>
                         <div class="metric-target">
-                            Meta: <span class="target">90%</span> | Diferença: -6.84%
+                            Meta: <span class="target">92%</span> | Diferença: -8.84%
                         </div>
                     </div>
                     
                     <div class="metric-card danger">
                         <div class="metric-title">Satisfação do Cliente</div>
-                        <div class="metric-value">2,6</div>
+                        <div class="metric-value">2.6 <i class="fas fa-exclamation-triangle critical-icon improvement-icon"></i></div>
                         <div class="metric-target">
                             Meta: <span class="target">Acima de 4,5</span> | Diferença: -1.9
                         </div>
@@ -612,17 +602,17 @@
                     
                     <div class="metric-card danger">
                         <div class="metric-title">Atendimentos Avaliados</div>
-                        <div class="metric-value">5,26%</div>
+                        <div class="metric-value">5.26% <i class="fas fa-exclamation-triangle danger-icon improvement-icon"></i></div>
                         <div class="metric-target">
                             Meta: <span class="target">30%</span> | Diferença: -24.74%
                         </div>
                     </div>
                     
                     <div class="metric-card success">
-                        <div class="metric-title">Tempo Médio de Atendimento <span class="strength-badge">PONTO FORTE</span></div>
-                        <div class="metric-value">32min 26s</div>
+                        <div class="metric-title">Tempo Médio de Atendimento</div>
+                        <div class="metric-value">32min 26s <i class="fas fa-check success-icon improvement-icon"></i></div>
                         <div class="metric-target">
-                            Meta: <span class="target">37 min</span> | Diferença: -4min 34s
+                            Meta: <span class="target">30min</span> | Diferença: +2min 26s
                         </div>
                     </div>
                 </div>
@@ -631,30 +621,30 @@
                     <h3>Visão Geral das Métricas</h3>
                     <div class="metric-info">
                         <span class="metric-label">Tickets Abertos:</span>
-                        <span class="metric-number">95</span>
+                        <span class="metric-number">61</span>
                     </div>
                     <div class="metric-info">
                         <span class="metric-label">Tickets Resolvidos:</span>
-                        <span class="metric-number">79</span>
+                        <span class="metric-number">53</span>
                     </div>
                     <div class="metric-info">
                         <span class="metric-label">Taxa de Resolução:</span>
-                        <span class="metric-number">83,16%</span>
+                        <span class="metric-number">86.89%</span>
                     </div>
                     <div class="metric-info">
                         <span class="metric-label">Média de Avaliação:</span>
-                        <span class="metric-number">2,6</span>
+                        <span class="metric-number">2.6</span>
                     </div>
                     <div class="metric-info">
                         <span class="metric-label">% de Atendimentos Avaliados:</span>
-                        <span class="metric-number">5,26%</span>
+                        <span class="metric-number">5.26%</span>
                     </div>
                     <div class="metric-info">
                         <span class="metric-label">Tempo Médio de Atendimento:</span>
-                        <span class="metric-number">32min 26seg</span>
+                        <span class="metric-number">32min 26s</span>
                     </div>
                     <div class="divider"></div>
-                    <p><strong>Análise:</strong> Emanuel Skunieczny apresenta um perfil de desempenho desequilibrado. Enquanto demonstra grande agilidade e eficiência no tempo de atendimento (32min26seg), superando a meta, seus indicadores de qualidade e efetividade estão em níveis críticos: baixíssima satisfação do cliente (2,6) e taxa de resolução abaixo da meta (83,16%).</p>
+                    <p><strong>Análise Crítica:</strong> Emanuel apresenta um perfil de desempenho desequilibrado e preocupante. Enquanto demonstra agilidade no tempo de atendimento (32min26seg), seus indicadores de qualidade e efetividade estão em níveis críticos: satisfação do cliente extremamente baixa (2,6) e taxa de resolução significativamente abaixo da meta (83,16%). Isso sugere uma troca inadvertida entre velocidade e qualidade, com clientes saindo insatisfeitos mesmo com respostas rápidas.</p>
                 </div>
             </div>
         </section>
@@ -664,32 +654,32 @@
             <h2 class="section-title">Análise por Indicador</h2>
             
             <div class="values-container">
-                <div class="value-card performance-critical">
+                <div class="value-card">
                     <h3 class="value-title">Taxa de Resolução</h3>
-                    <p><strong>Meta:</strong> 90%</p>
+                    <p><strong>Meta:</strong> 92%</p>
                     <p><strong>Desempenho Atual:</strong> 83,16%</p>
-                    <p><strong>Observações:</strong> Desempenho abaixo da meta. A taxa de resolução está 6,84% abaixo do objetivo, indicando que uma parcela significativa dos tickets (35) não está sendo resolvida no primeiro contato. Isso impacta diretamente a eficiência e a experiência do cliente, que pode precisar retornar várias vezes para resolver o mesmo problema.</p>
+                    <p><strong>Observações:</strong> Desempenho abaixo da meta. A taxa de resolução está 8,84% abaixo do objetivo, indicando que uma parcela significativa dos tickets não está sendo resolvida no primeiro contato. Isso impacta diretamente a eficiência e a experiência do cliente, que pode precisar retornar várias vezes para resolver o mesmo problema.</p>
                 </div>
                 
-                <div class="value-card performance-critical">
-                    <h3 class="value-title">Satisfação do Cliente <span class="priority-badge">CRÍTICO</span></h3>
+                <div class="value-card">
+                    <h3 class="value-title">Satisfação do Cliente (Média de Avaliação)</h3>
                     <p><strong>Meta:</strong> Acima de 4,5</p>
-                    <p><strong>Desempenho Atual:</strong> 2,6</p>
-                    <p><strong>Observações:</strong> Indicador crítico. A média de avaliação está muito abaixo da meta, sugerindo insatisfação recorrente dos clientes que fornecem feedback. Embora a amostra seja pequena (11 avaliações), a nota baixa é um forte sinal de alerta que requer investigação imediata e profunda sobre a qualidade do atendimento e da comunicação.</p>
+                    <p><strong>Desempenho Atual:</strong> 2,6 <i class="fas fa-exclamation-triangle critical-icon"></i></p>
+                    <p><strong>Observações:</strong> <strong>Indicador crítico.</strong> A média de avaliação está muito abaixo da meta, sugerindo insatisfação recorrente dos clientes que fornecem feedback. Embora a amostra seja pequena (3 avaliações), a nota baixa é um forte sinal de alerta que requer investigação imediata e profunda sobre a qualidade do atendimento e da comunicação.</p>
                 </div>
                 
-                <div class="value-card performance-critical">
+                <div class="value-card">
                     <h3 class="value-title">% de Atendimentos Avaliados</h3>
                     <p><strong>Meta:</strong> 30%</p>
                     <p><strong>Desempenho Atual:</strong> 5,26%</p>
                     <p><strong>Observações:</strong> A taxa de avaliações é muito baixa, limitando severamente a representatividade do dado de satisfação. No entanto, considerando a nota média atual (2,6), é urgente entender os motivos dessa insatisfação antes de buscar ampliar a coleta.</p>
                 </div>
                 
-                <div class="value-card performance-highlight">
-                    <h3 class="value-title">Tempo Médio de Atendimento <span class="strength-badge">PONTO FORTE</span></h3>
-                    <p><strong>Meta:</strong> 37 min</p>
+                <div class="value-card">
+                    <h3 class="value-title">Tempo Médio de Atendimento</h3>
+                    <p><strong>Meta:</strong> 30 min</p>
                     <p><strong>Desempenho Atual:</strong> 32min 26seg</p>
-                    <p><strong>Observações:</strong> Ponto forte e acima da meta. Este é o único indicador que supera a expectativa, demonstrando agilidade e eficiência operacional no processamento dos tickets. Este ponto positivo deve ser mantido e pode servir de base para trabalhar as outras áreas.</p>
+                    <p><strong>Observações:</strong> Ponto forte e próximo da meta. Este é o único indicador com desempenho aceitável, demonstrando agilidade e eficiência operacional no processamento dos tickets. Este ponto positivo deve ser mantido e pode servir de base para trabalhar as outras áreas, realocando parte do tempo para garantir qualidade.</p>
                 </div>
             </div>
         </section>
@@ -702,16 +692,17 @@
                 <div class="action-card">
                     <h4><i class="fas fa-thumbs-up"></i> Pontos Positivos</h4>
                     <ul style="padding-left: 20px; margin-top: 10px;">
-                        <li><strong>Eficiência Operacional Exemplar (32min 26seg):</strong> Supera a meta de tempo, demonstrando habilidade em gerenciar o fluxo de trabalho de forma ágil. Esta é uma base sólida para trabalhar.</li>
+                        <li><strong>Eficiência Operacional (32min 26seg):</strong> Próximo da meta de tempo, demonstrando habilidade em gerenciar o fluxo de trabalho de forma ágil. Esta é uma base sólida para trabalhar as melhorias de qualidade.</li>
+                        <li><strong>Volume de trabalho gerenciado:</strong> Atendeu 61 tickets na semana, demonstrando capacidade de lidar com demanda.</li>
                     </ul>
                 </div>
                 
                 <div class="action-card">
-                    <h4><i class="fas fa-exclamation-triangle"></i> Áreas Críticas Identificadas <span class="priority-badge">PRIORIDADE MÁXIMA</span></h4>
+                    <h4><i class="fas fa-exclamation-triangle"></i> Áreas Críticas</h4>
                     <ol style="padding-left: 20px; margin-top: 10px;">
-                        <li><strong>Satisfação do Cliente (2,6):</strong> Prioridade máxima. A experiência do cliente está claramente negativa e precisa ser radicalmente melhorada.</li>
+                        <li><strong>Satisfação do Cliente (2,6):</strong> <span style="color: var(--danger); font-weight: bold;">PRIORIDADE MÁXIMA.</span> A experiência do cliente está claramente negativa e precisa ser radicalmente melhorada.</li>
                         <li><strong>Eficácia na Resolução (83,16%):</strong> A incapacidade de resolver questões no primeiro contato é um provável contribuinte direto para a insatisfação.</li>
-                        <li><strong>Qualidade vs. Velocidade:</strong> Há um claro desequilíbrio entre a velocidade do atendimento (ótima) e sua qualidade/efetividade (baixa). É preciso alinhá-las.</li>
+                        <li><strong>Qualidade vs. Velocidade:</strong> Há um claro desequilíbrio entre a velocidade do atendimento (adequada) e sua qualidade/efetividade (baixa). É preciso alinhá-las.</li>
                     </ol>
                 </div>
                 
@@ -720,92 +711,62 @@
                     <ul style="padding-left: 20px; margin-top: 10px;">
                         <li><strong>Investigação Profunda da Insatisfação:</strong>
                             <ul style="padding-left: 15px; margin-top: 5px;">
-                                <li>Revisar todos os 11 tickets avaliados com atenção redobrada</li>
-                                <li>Implementar sessões de coaching focadas em comunicação e empatia</li>
-                                <li>Analisar uma amostra dos tickets não avaliados</li>
+                                <li>Revisar todos os tickets avaliados com atenção redobrada para o conteúdo das possíveis reclamações.</li>
+                                <li>Implementar sessões de coaching focadas em comunicação, empatia e técnicas de diagnóstico de problemas.</li>
                             </ul>
                         </li>
                         <li><strong>Aumentar a Efetividade do Atendimento:</strong>
                             <ul style="padding-left: 15px; margin-top: 5px;">
-                                <li>Revisar os 35 tickets não resolvidos para categorizar causas</li>
-                                <li>Melhorar qualidade da investigação inicial do problema</li>
+                                <li>Revisar os tickets não resolvidos para categorizar as causas: falta de conhecimento, processo inadequado, comunicação falha?</li>
+                                <li>Focar em melhorar a qualidade da investigação inicial para entender completamente o problema.</li>
                             </ul>
                         </li>
                         <li><strong>Usar o Ponto Forte a Favor:</strong>
                             <ul style="padding-left: 15px; margin-top: 5px;">
-                                <li>Realocar parte do tempo para comunicação mais clara</li>
-                                <li>Verificação mais cuidadosa da solução antes de fechar tickets</li>
+                                <li>Como o tempo de atendimento está sob controle, parte dele pode ser realocada para garantir comunicação mais clara e verificação cuidadosa da solução.</li>
                             </ul>
                         </li>
                     </ul>
                 </div>
             </div>
             
-            <div class="observations" style="margin-top: 30px; background-color: #fee2e2; border-left: 5px solid var(--danger);">
-                <h3><i class="fas fa-exclamation-circle"></i> Objetivos para a Próxima Semana</h3>
+            <div class="observations" style="margin-top: 30px; background-color: #fff5f5; border-left-color: var(--danger);">
+                <h3 style="color: var(--danger);">⚠️ PLANO DE AÇÃO DE EMERGÊNCIA</h3>
                 <div class="metrics-grid" style="margin-top: 20px;">
-                    <div class="metric-card">
-                        <div class="metric-title">Estabilizar Qualidade</div>
-                        <div class="metric-value">3,5+</div>
-                        <div class="metric-target">Elevar média de satisfação para pelo menos 3,5</div>
+                    <div class="metric-card" style="background-color: #fff5f5;">
+                        <div class="metric-title">Satisfação do Cliente</div>
+                        <div class="metric-value" style="color: var(--danger);">≥ 3.5</div>
+                        <div class="metric-target">Elevar para pelo menos 3.5 (primeira etapa)</div>
                     </div>
                     
-                    <div class="metric-card">
-                        <div class="metric-title">Melhorar Resolução</div>
-                        <div class="metric-value">85%</div>
-                        <div class="metric-target">Taxa de resolução de 85% como primeiro passo</div>
+                    <div class="metric-card" style="background-color: #fff5f5;">
+                        <div class="metric-title">Taxa de Resolução</div>
+                        <div class="metric-value" style="color: var(--warning);">≥ 85%</div>
+                        <div class="metric-target">Atingir 85% como primeiro passo</div>
                     </div>
                     
-                    <div class="metric-card">
-                        <div class="metric-title">Monitoramento Aperto</div>
-                        <div class="metric-value" style="font-size: 24px;">Feedback em tempo real</div>
-                        <div class="metric-target">Revisão diária/semanal por supervisor</div>
+                    <div class="metric-card" style="background-color: #fff5f5;">
+                        <div class="metric-title">Monitoramento</div>
+                        <div class="metric-value" style="color: var(--primary);">Diário</div>
+                        <div class="metric-target">Revisão diária com supervisor/coach</div>
                     </div>
                     
-                    <div class="metric-card success">
-                        <div class="metric-title">Manter Eficiência</div>
-                        <div class="metric-value">&lt; 35min</div>
-                        <div class="metric-target">Preservar tempo médio abaixo de 35 minutos</div>
+                    <div class="metric-card" style="background-color: #fff5f5;">
+                        <div class="metric-title">Tempo de Atendimento</div>
+                        <div class="metric-value" style="color: var(--success);">&lt; 35min</div>
+                        <div class="metric-target">Manter abaixo de 35 minutos</div>
                     </div>
                 </div>
+                <p style="margin-top: 15px; font-weight: bold;">Ações Imediatas: 1) Treinamento direcionado com base na análise dos tickets problemáticos; 2) Revisão em tempo real dos tickets; 3) Coaching intensivo em comunicação e resolução de problemas.</p>
             </div>
             
             <div class="observations" style="margin-top: 30px; background-color: #f0f9ff;">
                 <h3>Resumo</h3>
-                <p><strong>Emanuel Skunieczny apresenta um perfil de desempenho desequilibrado.</strong> Enquanto demonstra grande agilidade e eficiência no tempo de atendimento (32min26seg), superando a meta, seus indicadores de qualidade e efetividade estão em níveis críticos: baixíssima satisfação do cliente (2,6) e taxa de resolução abaixo da meta (83,16%).</p>
-                <p style="margin-top: 15px;">Isso sugere uma troca inadvertida entre velocidade e qualidade. <strong>A prioridade absoluta é redirecionar o foco para a eficácia e a experiência do cliente</strong>, mesmo que isso signifique um ajuste temporário no tempo de resolução. É necessário um suporte intensivo e direcionado para desenvolver habilidades de comunicação, diagnóstico e resolução de problemas, utilizando sua velocidade como uma aliada para uma entrega de maior qualidade.</p>
+                <p>Emanuel Skunieczny apresenta um perfil de desempenho desequilibrado e preocupante. Enquanto demonstra agilidade e eficiência no tempo de atendimento (32min26seg), seus indicadores de qualidade e efetividade estão em níveis críticos: baixíssima satisfação do cliente (2,6) e taxa de resolução abaixo da meta (83,16%).</p>
+                <p style="margin-top: 10px;">Isso sugere uma troca inadvertida entre velocidade e qualidade. A prioridade absoluta é redirecionar o foco para a eficácia e a experiência do cliente, mesmo que isso signifique um ajuste temporário no tempo de resolução. É necessário um <strong>suporte intensivo e direcionado</strong> para desenvolver habilidades de comunicação, diagnóstico e resolução de problemas, utilizando sua velocidade como uma aliada para uma entrega de maior qualidade. O monitoramento deve ser diário até que os indicadores críticos mostrem melhoria consistente.</p>
             </div>
         </section>
     </div>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Bitz Softwares</h3>
-                    <p>Sistema de gestão de propriedades e análise de desempenho para o setor de hospitalidade.</p>
-                    <p>Transformando dados em resultados excepcionais.</p>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Contato</h3>
-                    <p><i class="fas fa-envelope"></i> contato@bitzsoftwares.com</p>
-                    <p><i class="fas fa-phone"></i> (11) 99999-9999</p>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Valores</h3>
-                    <p>Coragem, Comprometimento, Inovação, Honestidade, Agilidade e Qualidade.</p>
-                </div>
-            </div>
-            
-            <div class="copyright">
-                <p>&copy; 2026 Bitz Softwares. Todos os direitos reservados.</p>
-                <p>Relatório gerado em: <span id="current-date"></span></p>
-            </div>
-        </div>
-    </footer>
 
     <script>
         // Função para destacar a seção ativa no menu
@@ -872,7 +833,13 @@
             const today = new Date();
             const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
             const dateString = today.toLocaleDateString('pt-BR', options);
-            document.getElementById('current-date').textContent = dateString;
+            const copyrightDiv = document.createElement('div');
+            copyrightDiv.className = 'copyright';
+            copyrightDiv.innerHTML = `
+                <p>© 2026 Bitz Softwares. Todos os direitos reservados.</p>
+                <p>Relatório gerado em: ${dateString}</p>
+            `;
+            document.querySelector('footer').appendChild(copyrightDiv);
         });
     </script>
 </body>

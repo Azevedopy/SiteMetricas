@@ -403,26 +403,22 @@
             margin: 25px 0;
         }
         
-        .critical-highlight {
-            background-color: #fee2e2;
-            border-left: 5px solid var(--danger);
-        }
-        
-        .warning-highlight {
-            background-color: #fff7ed;
-            border-left: 5px solid var(--warning);
-        }
-        
-        .priority-badge {
+        .improvement-icon {
             display: inline-block;
-            background-color: var(--danger);
-            color: white;
-            padding: 3px 10px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-left: 10px;
-            vertical-align: middle;
+            margin-left: 5px;
+            font-size: 18px;
+        }
+        
+        .danger-icon {
+            color: var(--danger);
+        }
+        
+        .warning-icon {
+            color: var(--warning);
+        }
+        
+        .success-icon {
+            color: var(--success);
         }
     </style>
 </head>
@@ -542,7 +538,7 @@
                 <div class="employee-info">
                     <div>
                         <h3 class="employee-name">Wuilianis Rodrigues</h3>
-                        <p class="period">Período: 04/01/2026 à 10/01/2026</p>
+                        <p class="period">Período: 11/01/2026 à 17/01/2026</p>
                     </div>
                     <div>
                         <div class="logo">
@@ -553,71 +549,82 @@
                 </div>
                 
                 <h3 class="section-title" style="text-align: left; margin-bottom: 20px; font-size: 22px;">Metas da Semana</h3>
-                <div class="metrics-grid">
+                 <div class="metrics-grid">
                     <div class="metric-card">
                         <div class="metric-title">Taxa de Resolução</div>
-                        <div class="metric-value">92%</div>
-                        <div class="metric-target">
-                            Meta: <span class="target">92%</span>
-                        </div>
+                        <div class="metric-value">Meta 92%</div>
                     </div>
                     
                     <div class="metric-card">
                         <div class="metric-title">Satisfação do Cliente</div>
-                        <div class="metric-value">4.5+</div>
-                        <div class="metric-target">
-                            Meta: <span class="target">Acima de 4.5</span>
-                        </div>
+                        <div class="metric-value">Meta 4.5+</div>
                     </div>
                     
                     <div class="metric-card">
                         <div class="metric-title">Atendimentos Avaliados</div>
-                        <div class="metric-value">30%</div>
-                        <div class="metric-target">
-                            Meta: <span class="target">30%</span>
-                        </div>
+                        <div class="metric-value">Meta 30%</div>
                     </div>
                     
                     <div class="metric-card">
-                        <div class="metric-title">Tempo Médio de Atendimento</div>
-                        <div class="metric-value">30min</div>
-                        <div class="metric-target">
-                            Meta: <span class="target">30 min</span>
-                        </div>
+                        <div class="metric-title">Tempo Médio Atend.</div>
+                        <div class="metric-value">Meta 30min</div>
+                    </div>
+                </div>
+
+                <h3 class="section-title" style="text-align: left; margin-bottom: 20px; font-size: 22px;">Metas da Semana</h3>
+                 <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-title">Taxa de Resolução</div>
+                        <div class="metric-value">90.48%</div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-title">Satisfação do Cliente</div>
+                        <div class="metric-value">3.0</div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-title">Atendimentos Avaliados</div>
+                        <div class="metric-value">2.38%</div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-title">Tempo Médio Atend.</div>
+                        <div class="metric-value">57min 30s</div>
                     </div>
                 </div>
                 
-                <h3 class="section-title" style="text-align: left; margin-bottom: 20px; font-size: 22px;">Desempenho Realizado <span class="priority-badge">ATENÇÃO URGENTE</span></h3>
+                <h3 class="section-title" style="text-align: left; margin-bottom: 20px; font-size: 22px;">Desempenho Realizado</h3>
                 <div class="metrics-grid">
                     <div class="metric-card warning">
                         <div class="metric-title">Taxa de Resolução</div>
-                        <div class="metric-value">90.48%</div>
+                        <div class="metric-value">90.36% <i class="fas fa-exclamation-triangle warning-icon improvement-icon"></i></div>
                         <div class="metric-target">
-                            Meta: <span class="target">92%</span> | Diferença: -1.52%
+                            Meta: <span class="target">92%</span> | Diferença: -1.64%
                         </div>
                     </div>
                     
-                    <div class="metric-card danger">
+                    <div class="metric-card warning">
                         <div class="metric-title">Satisfação do Cliente</div>
-                        <div class="metric-value">3.0</div>
+                        <div class="metric-value">4.33 <i class="fas fa-exclamation-triangle warning-icon improvement-icon"></i></div>
                         <div class="metric-target">
-                            Meta: <span class="target">Acima de 4.5</span> | Diferença: -1.5
+                            Meta: <span class="target">Acima de 4,5</span> | Diferença: -0.17
                         </div>
                     </div>
                     
                     <div class="metric-card danger">
                         <div class="metric-title">Atendimentos Avaliados</div>
-                        <div class="metric-value">2.38%</div>
+                        <div class="metric-value">4.08% <i class="fas fa-exclamation-triangle danger-icon improvement-icon"></i></div>
                         <div class="metric-target">
-                            Meta: <span class="target">30%</span> | Diferença: -27.62%
+                            Meta: <span class="target">30%</span> | Diferença: -25.92%
                         </div>
                     </div>
                     
                     <div class="metric-card danger">
                         <div class="metric-title">Tempo Médio de Atendimento</div>
-                        <div class="metric-value">57min 30s</div>
+                        <div class="metric-value">1h 02min <i class="fas fa-exclamation-triangle danger-icon improvement-icon"></i></div>
                         <div class="metric-target">
-                            Meta: <span class="target">30 min</span> | Diferença: +27min 30s
+                            Meta: <span class="target">30min</span> | Diferença: +32min
                         </div>
                     </div>
                 </div>
@@ -626,30 +633,30 @@
                     <h3>Visão Geral das Métricas</h3>
                     <div class="metric-info">
                         <span class="metric-label">Tickets Abertos:</span>
-                        <span class="metric-number">84</span>
+                        <span class="metric-number">83</span>
                     </div>
                     <div class="metric-info">
                         <span class="metric-label">Tickets Resolvidos:</span>
-                        <span class="metric-number">76</span>
+                        <span class="metric-number">75</span>
                     </div>
                     <div class="metric-info">
                         <span class="metric-label">Taxa de Resolução:</span>
-                        <span class="metric-number">90.48%</span>
+                        <span class="metric-number">90.36%</span>
                     </div>
                     <div class="metric-info">
                         <span class="metric-label">Média de Avaliação:</span>
-                        <span class="metric-number">3.0</span>
+                        <span class="metric-number">4.33</span>
                     </div>
                     <div class="metric-info">
                         <span class="metric-label">% de Atendimentos Avaliados:</span>
-                        <span class="metric-number">2.38%</span>
+                        <span class="metric-number">4.08%</span>
                     </div>
                     <div class="metric-info">
                         <span class="metric-label">Tempo Médio de Atendimento:</span>
-                        <span class="metric-number">57min 30seg</span>
+                        <span class="metric-number">1h 02min</span>
                     </div>
                     <div class="divider"></div>
-                    <p><strong>Análise Crítica:</strong> Wuilianis Rodrigues apresenta uma situação que requer ação focada e rápida. A taxa de resolução atinge a meta mínima (90,48%), mas isso é ofuscado por dois indicadores críticos: a baixíssima satisfação do cliente (3,0) e a ineficiência no tempo de atendimento (57min30seg).</p>
+                    <p><strong>Análise:</strong> Wuilianis Rodrigues apresentou uma situação que requer atenção imediata em eficiência operacional. A taxa de resolução atinge a meta mínima (90,36%), mas é ofuscada por um tempo de atendimento excessivo (1h 02min) que representa o principal gargalo de produtividade. A baixíssima coleta de feedback (4,08%) impede uma avaliação confiável da satisfação, que também se mostra abaixo da meta (4,33).</p>
                 </div>
             </div>
         </section>
@@ -659,32 +666,32 @@
             <h2 class="section-title">Análise por Indicador</h2>
             
             <div class="values-container">
-                <div class="value-card warning-highlight">
+                <div class="value-card">
                     <h3 class="value-title">Taxa de Resolução</h3>
                     <p><strong>Meta:</strong> 92%</p>
-                    <p><strong>Desempenho Atual:</strong> 90.48%</p>
-                    <p><strong>Observações:</strong> Isso demonstra capacidade básica de resolver questões no primeiro contato, mas há uma oportunidade significativa para aumentar a robustez e a consistência desse indicador. A análise dos 12 tickets não resolvidos é essencial.</p>
+                    <p><strong>Desempenho Atual:</strong> 90,36% ✅</p>
+                    <p><strong>Observações:</strong> O desempenho atinge a meta por uma margem mínima (0,36% acima). Isso demonstra capacidade de resolução no primeiro contato, mas com pouca folga para consistência. A análise dos 8 tickets não resolvidos é essencial para identificar oportunidades de melhoria e aumentar a robustez deste indicador.</p>
                 </div>
                 
-                <div class="value-card critical-highlight">
-                    <h3 class="value-title">Satisfação do Cliente <span class="priority-badge">CRÍTICO</span></h3>
-                    <p><strong>Meta:</strong> Acima de 4.5</p>
-                    <p><strong>Desempenho Atual:</strong> 3.0</p>
-                    <p><strong>Observações:</strong> Este é o indicador que demanda atenção mais urgente. A média de 3.0 está consideravelmente abaixo da meta e indica que a experiência do cliente durante o atendimento não está atendendo às expectativas. É crucial investigar as causas profundas, já que a baixa quantidade de avaliações (5 no total) sugere que esse dado, mesmo preocupante, pode não representar toda a realidade.</p>
+                <div class="value-card">
+                    <h3 class="value-title">Satisfação do Cliente (Média de Avaliação)</h3>
+                    <p><strong>Meta:</strong> Acima de 4,5</p>
+                    <p><strong>Desempenho Atual:</strong> 4,33 ⚠️</p>
+                    <p><strong>Observações:</strong> A média está abaixo da meta, indicando oportunidade para aprimorar a experiência do cliente. É crucial considerar que este dado vem de apenas 4,08% dos atendimentos (aproximadamente 3-4 avaliações), o que limita significativamente sua representatividade. Aumentar a base de feedback é fundamental para uma avaliação precisa.</p>
                 </div>
                 
-                <div class="value-card critical-highlight">
+                <div class="value-card">
                     <h3 class="value-title">% de Atendimentos Avaliados</h3>
                     <p><strong>Meta:</strong> 30%</p>
-                    <p><strong>Desempenho Atual:</strong> 2.38%</p>
-                    <p><strong>Observações:</strong> A taxa de avaliações é extremamente baixa, a menor entre as análises. Com apenas 5 avaliações em 210 atendimentos, há uma carência crítica de feedback para gestão. Sem aumentar este volume, fica difícil medir com precisão a satisfação e direcionar melhorias efetivas.</p>
+                    <p><strong>Desempenho Atual:</strong> 4,08% ⚠️</p>
+                    <p><strong>Observações:</strong> Este é um ponto crítico. A taxa de avaliações está extremamente baixa, comprometendo qualquer análise confiável sobre satisfação do cliente. Com tão poucos feedbacks, é difícil medir com precisão a qualidade real do atendimento e direcionar melhorias efetivas.</p>
                 </div>
                 
-                <div class="value-card critical-highlight">
+                <div class="value-card">
                     <h3 class="value-title">Tempo Médio de Atendimento</h3>
-                    <p><strong>Meta:</strong> 37 min</p>
-                    <p><strong>Desempenho Atual:</strong> 57min 30seg</p>
-                    <p><strong>Observações:</strong> O tempo médio está 20 minutos acima da meta, o que representa um desvio significativo em eficiência operacional. Isso pode estar relacionado à complexidade dos casos, a processos internos ou a uma curva de aprendizagem. Reduzir este tempo é fundamental para melhorar a produtividade.</p>
+                    <p><strong>Meta:</strong> 30 min</p>
+                    <p><strong>Desempenho Atual:</strong> 1hr 2min ⚠️</p>
+                    <p><strong>Observações:</strong> O tempo médio está 68% acima da meta, representando um desvio significativo em eficiência operacional. Este é o indicador com maior distância da meta, sugerindo necessidade de otimização de processos, capacitação ou revisão da abordagem para agilizar as resoluções.</p>
                 </div>
             </div>
         </section>
@@ -697,77 +704,79 @@
                 <div class="action-card">
                     <h4><i class="fas fa-thumbs-up"></i> Pontos Positivos</h4>
                     <ul style="padding-left: 20px; margin-top: 10px;">
-                        <li><strong>Taxa de Resolução no Limiar da Meta (90.48%):</strong> Consegue resolver a maioria das demandas no primeiro contato, o que é uma base sólida para trabalhar as outras melhorias.</li>
+                        <li><strong>Taxa de Resolução no Limiar da Meta (90,36%):</strong> Consegue resolver a maioria das demandas no primeiro contato, demonstrando competência técnica básica.</li>
+                        <li><strong>Gestão de Volume Moderado:</strong> Conseguiu gerenciar 83 tickets com taxa de resolução aceitável.</li>
+                        <li><strong>Comprometimento com o trabalho:</strong> Manteve esforço na resolução de tickets apesar dos desafios de eficiência.</li>
                     </ul>
                 </div>
                 
                 <div class="action-card">
-                    <h4><i class="fas fa-exclamation-triangle"></i> Áreas Prioritárias <span class="priority-badge">URGENTE</span></h4>
+                    <h4><i class="fas fa-exclamation-triangle"></i> Áreas de Melhoria</h4>
                     <ol style="padding-left: 20px; margin-top: 10px;">
-                        <li><strong>Satisfação do Cliente (3.0):</strong> Desempenho crítico e abaixo da meta. A qualidade percebida do atendimento precisa de intervenção imediata.</li>
-                        <li><strong>Eficiência Operacional (57min 30seg):</strong> Tempo de atendimento muito elevado, impactando a capacidade de resposta e a produtividade.</li>
-                        <li><strong>Coleta de Feedback (2.38%):</strong> Base de dados insuficiente para qualquer análise confiável de satisfação, mascarando a real performance.</li>
+                        <li><strong>Tempo Médio de Atendimento (1hr 2min)</strong> – Ineficiência operacional crítica, com tempo excessivo por ticket impactando produtividade.</li>
+                        <li><strong>% de Atendimentos Avaliados (4,08%)</strong> – Coleta de feedback insuficiente, impedindo análise confiável da satisfação.</li>
+                        <li><strong>Satisfação do Cliente (4,33)</strong> – Desempenho abaixo da meta, necessitando aprimoramento na experiência do cliente.</li>
                     </ol>
                 </div>
                 
                 <div class="action-card">
-                    <h4><i class="fas fa-clipboard-list"></i> Ações Recomendadas <span class="priority-badge">AÇÃO IMEDIATA</span></h4>
+                    <h4><i class="fas fa-clipboard-list"></i> Ações Recomendadas</h4>
                     <ul style="padding-left: 20px; margin-top: 10px;">
-                        <li><strong>Investigação Imediata da Baixa Satisfação:</strong>
-                            <ul style="padding-left: 15px; margin-top: 5px;">
-                                <li>Revisar minuciosamente os 5 tickets que foram avaliados</li>
-                                <li>Realizar sessão de coaching ou shadowing para identificar gaps</li>
-                            </ul>
-                        </li>
                         <li><strong>Otimização Agressiva do Tempo de Atendimento:</strong>
                             <ul style="padding-left: 15px; margin-top: 5px;">
-                                <li>Análise detalhada de todos os tickets que excederam 1 hora</li>
-                                <li>Implementar checklists de diagnóstico rápido</li>
+                                <li>Realizar análise detalhada dos 20% dos tickets mais longos (>1h15min) para identificar padrões de complexidade ou gargalos processuais.</li>
+                                <li>Implementar checklists de diagnóstico rápido e validar o uso de scripts/templates para respostas a problemas frequentes.</li>
                             </ul>
                         </li>
                         <li><strong>Campanha para Geração de Feedback:</strong>
                             <ul style="padding-left: 15px; margin-top: 5px;">
-                                <li>Solicitação ativa de avaliação em todo atendimento</li>
-                                <li>Meta pessoal de coletar 1-2 avaliações por dia</li>
+                                <li>Priorizar a solicitação ativa e sistemática de avaliação ao final de cada atendimento.</li>
+                                <li>Estabelecer meta pessoal de coletar pelo menos 1 avaliação a cada 10 tickets atendidos.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Investigação e Melhoria da Satisfação:</strong>
+                            <ul style="padding-left: 15px; margin-top: 5px;">
+                                <li>Revisar minuciosamente as avaliações existentes (notas e comentários) para identificar pontos de insatisfação específicos.</li>
+                                <li>Realizar sessão de acompanhamento com supervisor para identificar possíveis gaps na comunicação ou técnica.</li>
                             </ul>
                         </li>
                     </ul>
                 </div>
             </div>
             
-            <div class="observations" style="margin-top: 30px; background-color: #fee2e2; border-left: 5px solid var(--danger);">
-                <h3><i class="fas fa-exclamation-circle"></i> Objetivos para a Próxima Semana <span class="priority-badge">PRIORIDADE MÁXIMA</span></h3>
+            <div class="observations" style="margin-top: 30px;">
+                <h3>Objetivos para a Próxima Semana</h3>
                 <div class="metrics-grid" style="margin-top: 20px;">
                     <div class="metric-card">
-                        <div class="metric-title">Diagnóstico da Insatisfação</div>
-                        <div class="metric-value" style="font-size: 24px;">Entender razões</div>
-                        <div class="metric-target">Análise dos tickets avaliados e acompanhamento direto</div>
+                        <div class="metric-title">Tempo de Atendimento</div>
+                        <div class="metric-value">&lt; 50min</div>
+                        <div class="metric-target">Reduzir para menos de 50 minutos</div>
                     </div>
                     
                     <div class="metric-card">
-                        <div class="metric-title">Ganho de Eficiência</div>
-                        <div class="metric-value">&lt; 52min</div>
-                        <div class="metric-target">Reduzir tempo médio para menos de 52 minutos</div>
+                        <div class="metric-title">% de Avaliações</div>
+                        <div class="metric-value">12%+</div>
+                        <div class="metric-target">Aumentar para pelo menos 8%</div>
                     </div>
                     
                     <div class="metric-card">
-                        <div class="metric-title">Base de Dados</div>
-                        <div class="metric-value">5%+</div>
-                        <div class="metric-target">Aumentar taxa de avaliações para pelo menos 5%</div>
+                        <div class="metric-title">Taxa de Resolução</div>
+                        <div class="metric-value">&gt; 92%</div>
+                        <div class="metric-target">Manter acima de 92%</div>
                     </div>
                     
-                    <div class="metric-card warning">
-                        <div class="metric-title">Estabilizar Resolução</div>
-                        <div class="metric-value">92%+</div>
-                        <div class="metric-target">Manter taxa de resolução acima de 92%</div>
+                    <div class="metric-card">
+                        <div class="metric-title">Satisfação</div>
+                        <div class="metric-value">4.5</div>
+                        <div class="metric-target">Elevar para 4.5+</div>
                     </div>
                 </div>
             </div>
             
             <div class="observations" style="margin-top: 30px; background-color: #f0f9ff;">
                 <h3>Resumo</h3>
-                <p><strong>Wuilianis Rodrigues apresenta uma situação que requer ação focada e rápida.</strong> A taxa de resolução atinge a meta mínima (90,48%), mas isso é ofuscado por dois indicadores críticos: a baixíssima satisfação do cliente (3,0) e a ineficiência no tempo de atendimento (57min30seg). A quantidade mínima de avaliações (2,38%) agrava o cenário, pois dificulta a análise precisa das causas.</p>
-                <p style="margin-top: 15px;"><strong>Prioridades absolutas:</strong> 1) Investigar e corrigir os motivos da insatisfação do cliente, e 2) Ganhar eficiência operacional para reduzir o tempo médio. O progresso deve ser monitorado de perto, com suporte direto para desenvolver as competências necessárias e reverter este quadro.</p>
+                <p>Wuilianis Rodrigues apresenta uma situação que requer atenção imediata em eficiência operacional. A taxa de resolução atinge a meta mínima (90,36%), mas é ofuscada por um tempo de atendimento excessivo (1hr 2min) que representa o principal gargalo de produtividade.</p>
+                <p style="margin-top: 10px;">As prioridades absolutas são: 1) Redução drástica do tempo por ticket através de análise de casos longos e otimização de processos, e 2) Implementação urgente de estratégias para capturar avaliações. O progresso deve ser monitorado de perto, com suporte direto para desenvolver maior eficiência sem comprometer a qualidade da resolução. A base técnica existe (90,36% de resolução), mas precisa ser complementada com ganhos de produtividade e melhor medição dos resultados.</p>
             </div>
         </section>
     </div>
@@ -837,7 +846,13 @@
             const today = new Date();
             const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
             const dateString = today.toLocaleDateString('pt-BR', options);
-            document.getElementById('current-date').textContent = dateString;
+            const copyrightDiv = document.createElement('div');
+            copyrightDiv.className = 'copyright';
+            copyrightDiv.innerHTML = `
+                <p>© 2026 Bitz Softwares. Todos os direitos reservados.</p>
+                <p>Relatório gerado em: ${dateString}</p>
+            `;
+            document.querySelector('footer').appendChild(copyrightDiv);
         });
     </script>
 </body>
